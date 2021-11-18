@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="app/categories"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="user-content">
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <app-image-shell class="user-image add-overlay" [display]="'cover'" animation="spinner" [src]="user?.image ?? './assets/sample-images/avatar.png'" [alt]="'item image'">
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="user-details">
+    <ion-col class="ion-no-padding details-wrapper">
+      <h2 class="user-name">
+        <app-text-shell [data]="user?.name"></app-text-shell>
+        <ion-icon name="checkmark-circle" color="bright-pink"></ion-icon>
+      </h2>
+      <span class="user-role">
+        <app-text-shell [data]="user?.role"></app-text-shell>
+      </span>
+      <p class="user-description">
+        <app-text-shell lines="3" [data]="user?.description"></app-text-shell>
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="user-preferences-wrapper">
+    
+    <ion-col size="12">
+      <h4 class="preference-name">Votre mail associé</h4>
+      <p class="preference-value">
+        <app-text-shell [data]="user?.email"></app-text-shell>
+      </p>
+    </ion-col>
+    <ion-col size="12">
+      <h4 class="preference-name">Fournisseur d'authentification</h4>
+      <p class="preference-value">
+        <app-text-shell [data]="user?.provider"></app-text-shell>
+      </p>
+    </ion-col>
+    
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Suivez vos stats !</ion-card-subtitle>
+      <ion-card-title>Mes Projets</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+Découvrir vos projets et leurs impacts sur la biodiversité. 
+    </ion-card-content>
+    <ion-button style="color: white" expand="block" [routerLink]="['/app/user/friends']">
+      Voir
+    </ion-button>
+  </ion-card>
+    <ion-col size="12">
+      <ion-button class="sign-out-btn" expand="block" fill="outline" color="bright-blue" (click)="signOut()">Se déconnecter</ion-button>
+    </ion-col>
+  </ion-row>
+
+
+
+  
+</ion-content>
