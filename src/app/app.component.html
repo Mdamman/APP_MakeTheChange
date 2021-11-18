@@ -1,0 +1,51 @@
+<ion-app>
+  <!-- when=false means that the split pane will never expand automatically -->
+  <!-- For more info check https://ionicframework.com/docs/api/split-pane -->
+  <ion-split-pane contentId="menu-content" when="false">
+    <ion-menu contentId="menu-content" class="app-sidemenu">
+      <ion-header>
+        <ion-toolbar>
+          <ion-row class="user-details-wrapper">
+            <ion-col size="4">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell class="user-avatar" animation="spinner" [src]="'https://makethechange.be/wp-content/uploads/2021/10/BEEoDIVERSITY-logo-terre.png'"></app-image-shell>
+              </app-aspect-ratio>
+            </ion-col>
+            <ion-col class="user-info-wrapper" size="8">
+              <h3 class="user-name">Maxime Damman</h3>
+              <h5 class="user-handle">@maxlamenace</h5>
+            </ion-col>
+          </ion-row>
+          <ion-row class="user-stats-wrapper user-details-wrapper">
+            <ion-col>
+              <span class="user-stat-value">2</span>
+              <span class="user-stat-name">Contributions</span>
+            </ion-col>
+            <ion-col>
+              <span class="user-stat-value">8</span>
+              <span class="user-stat-name">Impacts positifs</span>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Menu</ion-label>
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item [routerLink]="p.url">
+              <ion-icon slot="start" [name]="p.ionicIcon? p.ionicIcon: ''" [src]="p.customIcon? p.customIcon: ''"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+       
+      </ion-content>
+    </ion-menu>
+    <!-- Main app content get's rendered in this router-outlet -->
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
