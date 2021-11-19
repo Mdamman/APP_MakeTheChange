@@ -15,61 +15,21 @@
   </ion-header>
   
   <ion-content>
-    <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/Ruche-kenyane-1.jpg'" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-      
+    
+    
+      <div style="position:relative;text-align:left;color:#000000;font-size:25px;font-weight:450;">
+    <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/Ruche-kenyane-1.jpg'" style="display:block;width:100%;height:350px;;margin-left:auto;margin-right:auto;" />
+    <div style="position:absolute; bottom:8px; left:16px;">Envie d'investir dans un projet <strong>social </strong>qui contribue à la <strong>biodiversité</strong>?</div>
+      </div>
+    
        
   
   
-        <div style="text-align:center; margin-right: 30px; margin-left: 30px;">
-          <h1 style="color:#000000;">
-            Envie d&#39;investir dans un projet social tout en aidant la
-            <strong>
-              biodiversité
-            </strong>
-            ?
-          </h1>
-          <p>Déja <strong>86</strong> contributeurs !</p>
-        </div>
   
-  
-  
-    <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Adoptez des abeilles !</ion-card-subtitle>
-            <ion-card-title>Pas encore de 
-              projet?</ion-card-title>
-          </ion-card-header>
-    
-          <ion-card-content>
-  Découvrir les projets dans lequels vous voulez contribuer et qui auront un vrai impact sur le terrain.
-         </ion-card-content>
-         
-        </ion-card>
-  
-  
-  
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Suivez vos stats !</ion-card-subtitle>
-            <ion-card-title>Mes Projets</ion-card-title>
-          </ion-card-header>
-    
-          <ion-card-content>
-  Découvrir vos projets et leurs vertus sur la biodiversité. 
-          </ion-card-content>
-          <ion-button style="color: white" expand="block" [routerLink]="['/app/user/friends']">
-            Voir
-          </ion-button>
-        </ion-card>
-  
-  
-      
-  
-         
-          <h2>La contributuion à la biodiversité de tout les utilisateurs</h2>
+        <h2 style="text-align:center;">Ce qui a déjà été réalisé</h2>
           
-          <ion-card>
-          <ion-grid>
+        <ion-card>
+        <ion-grid>
           <ion-row>
             <ion-col size="8">
               <strong>Nombre d'abeilles adoptées</strong>
@@ -80,21 +40,43 @@
           </ion-row>
           <ion-row>
             <ion-col size="8">
-              <strong>Montant total investit sur la plateforme par ses utilisateurs</strong>
+              <strong>Nombre de contributeurs</strong>
             </ion-col>
             <ion-col>
-              50€
+              373
             </ion-col>
           </ion-row>
-        </ion-grid>
-      </ion-card>
+        
+        <ion-row>
+          <ion-col size="8">
+            <strong>Montant total des dons</strong>
+          </ion-col>
+          <ion-col>
+            755€
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>    
   
-  
+ 
+                 
       
-        <h2>Les projets d'implentation</h2>
+        <h2 style="text-align:center">Les projets d'implentation</h2>
   
         
-  
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Une ruche humaine</ion-card-subtitle>
+            <ion-card-title>Prison de Nivelles</ion-card-title>
+          </ion-card-header>
+          <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg'" />
+          <ion-card-content>
+    Immergée au centre de la prison, la ruche ...
+          </ion-card-content>
+          <ion-button style="color: white" expand="block" [routerLink]="['/contact-card']">
+            Découvrir ce projet
+          </ion-button>
+        </ion-card>
   
       <ion-card>
         <ion-card-header>
@@ -110,20 +92,7 @@
         </ion-button>
       </ion-card>
   
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Une ruche humaine</ion-card-subtitle>
-          <ion-card-title>Prison de Nivelles</ion-card-title>
-        </ion-card-header>
-        <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg'" />
-        <ion-card-content>
-  Immergée au centre de la prison, la ruche ...
-        </ion-card-content>
-        <ion-button style="color: white" expand="block" [routerLink]="['/contact-card']">
-          Découvrir ce projet
-        </ion-button>
-      </ion-card>
-  
+    
   
        
   </ion-content>
