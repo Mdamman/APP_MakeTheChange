@@ -78,6 +78,14 @@ const routes: Routes = [
     loadChildren: () => import('./video-playlist/video-playlist.module').then(m => m.VideoPlaylistPageModule)
   },
   {
+    path: 'posts',
+    loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsPageModule)
+  },
+  {
+    path: 'posts/:id',
+    loadChildren: () => import('./pages/post/post.module').then( m => m.PostPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'page-not-found'
   }

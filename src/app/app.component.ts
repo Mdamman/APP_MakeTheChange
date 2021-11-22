@@ -39,6 +39,11 @@ export class AppComponent {
       title: 'Profil',
       url: '/firebase/auth/profile',
       ionicIcon: 'list-outline'
+    },
+    {
+      title: 'Articles',
+      url: '/posts',
+      ionicIcon: 'list-outline'
     }
     
   ];

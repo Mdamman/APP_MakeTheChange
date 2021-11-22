@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/posts"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+
+
+  <ion-card *ngIf="post">
+
+    <ion-card-content>
+      <img [src]="post.media_url" [style.width]="'100%'">
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-card-title>{{ post?.title.rendered }}</ion-card-title>
+      <div [innerHTML]="post.content.rendered" padding></div>
+    </ion-card-content>
+
+    <ion-card-content><ion-badge>{{ post.date_gmt | date }}</ion-badge></ion-card-content>
+
+     
+    
+  </ion-card>
+
+</ion-content>
+ 
+<ion-footer color="secondary">
+  <ion-toolbar>
+    <ion-button expand="full" fill="clear" (click)="openOriginal()">
+      Lire sur le site
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
