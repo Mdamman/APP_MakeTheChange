@@ -16,33 +16,42 @@ import { HistoryHelperService } from './utils/history-helper.service';
 export class AppComponent {
   appPages = [
     {
-      title: 'Categories',
-      url: '/app/categories',
-      ionicIcon: 'list-outline'
+      title: 'Profil',
+      url: '/firebase/auth/profile',
+      ionicIcon: 'person-outline'
     },
     {
       title: 'Tableau de bord',
-      url: '/app/user',
-      ionicIcon: 'person-outline'
+      url: '/app/user/friends',
+      ionicIcon: 'id-card-outline'
     },
+    {
+      title: 'Contreparties',
+      url: '/app/categories',
+      ionicIcon: 'bag-handle-outline'
+    },
+    
     {
       title: 'Projet Nivelles',
       url: '/contact-card',
       customIcon: './assets/custom-icons/side-menu/contact-card.svg'
     },
+    
+    {
+      title: 'Articles',
+      url: '/posts',
+      ionicIcon: 'newspaper-outline'
+    },
+    
     {
       title: 'Notifications',
       url: '/app/notifications',
       ionicIcon: 'notifications-outline'
     },
+
     {
-      title: 'Profil',
+      title: 'Se déconnecter',
       url: '/firebase/auth/profile',
-      ionicIcon: 'list-outline'
-    },
-    {
-      title: 'Articles',
-      url: '/posts',
       ionicIcon: 'list-outline'
     }
     
