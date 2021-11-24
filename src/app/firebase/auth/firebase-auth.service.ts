@@ -152,7 +152,7 @@ export class FirebaseAuthService {
     const provierData = this.currentUser.providerData[0];
     const userData: any = provierData;
     userModel.image = this.getPhotoURL(provierData.providerId, provierData.photoURL);
-    userModel.name = userData.displayName || 'What\'s your name?';
+    userModel.name = userData.displayName || 'Indiquez votre nom';
     userModel.role = 'How would you describe yourself?';
     userModel.description = userData.description || 'Anything else you would like to share with the world?';
     userModel.phoneNumber = userData.phoneNumber || 'Is there a number where I can reach you?';
