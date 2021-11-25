@@ -8,7 +8,7 @@
 
 <ion-content class="login-content">
   <h2 class="auth-title">
-    Sign In with Firebase
+    Se connecter avec Firebase
     <br/>
   </h2>
   <form [formGroup]="loginForm" (ngSubmit)="signInWithEmail()">
@@ -27,7 +27,7 @@
 
       <ion-item class="input-item">
         <app-show-hide-password>
-          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+          <ion-input type="password" placeholder="Mot de Passe" formControlName="password"></ion-input>
         </app-show-hide-password>
       </ion-item>
       <div class="error-container">
@@ -40,7 +40,7 @@
       </div>
     </ion-list>
 
-    <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid">Log In</ion-button>
+    <ion-button class="login-btn" type="submit" expand="block" [disabled]="!loginForm.valid">Se connecter</ion-button>
     <div class="error-container" *ngIf="submitError">
       <div class="error-message">
         <ion-icon name="information-circle-outline"></ion-icon>
@@ -49,16 +49,16 @@
     </div>
     <ion-row class="other-auth-options-row">
       <ion-button class="signup-btn" fill="clear" [routerLink]="['/firebase/auth/sign-up']">
-        Sign Up!
+        Pas encore de compte?
       </ion-button>
     </ion-row>
   </form>
 
   <div class="social-auth-options">
     <p class="options-divider">Or</p>
-    <ion-button class="social-auth-btn facebook-auth-btn" expand="block" color="facebook" (click)="doFacebookLogin()">Log In with Facebook</ion-button>
-    <ion-button class="social-auth-btn google-auth-btn" expand="block" color="google" (click)="doGoogleLogin()">Log In with Google</ion-button>
-    <ion-button class="social-auth-btn twitter-auth-btn" expand="block" color="twitter" (click)="doTwitterLogin()">Log In with Twitter</ion-button>
-    <ion-button class="social-auth-btn apple-auth-btn" expand="block" color="dark" (click)="doAppleLogin()">Log In with Apple</ion-button>
+    <ion-button class="social-auth-btn facebook-auth-btn" expand="block" color="facebook" (click)="doFacebookLogin()">Se connecter avec Facebook</ion-button>
+    <ion-button class="social-auth-btn google-auth-btn" expand="block" color="google" (click)="doGoogleLogin()">Se connecter avec Google</ion-button>
+    <ion-button class="social-auth-btn twitter-auth-btn" expand="block" color="twitter" (click)="doTwitterLogin()">Se connecter avec Twitter</ion-button>
+    <ion-button class="social-auth-btn apple-auth-btn" expand="block" color="dark" (click)="doAppleLogin()">Se connecter avec Apple</ion-button>
   </div>
 </ion-content>
