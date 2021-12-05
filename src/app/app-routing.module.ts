@@ -86,9 +86,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/post/post.module').then( m => m.PostPageModule)
   },
   {
-    path: '**',
-    redirectTo: 'page-not-found'
-  }
+    path: 'ficheprojet',
+    loadChildren: () => import('./ficheprojet/ficheprojet.module').then( m => m.FicheprojetPageModule)
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+ 
+  {
+    path: 'prison-nivelles',
+    loadChildren: () => import('./prison-nivelles/prison-nivelles.module').then( m => m.PrisonNivellesPageModule)
+  },
+
+ 
 ];
 @NgModule({
   imports: [
