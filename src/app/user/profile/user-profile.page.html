@@ -1,113 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Accueil</ion-title>
+  </ion-toolbar>
+  <style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+  </style>
+</ion-header>
 
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Accueil</ion-title>
-    </ion-toolbar>
-    <style>
-      :root {
-        --ion-safe-area-top: 20px;
-        --ion-safe-area-bottom: 22px;
-      }
-    </style>
-  </ion-header>
-  
-  <ion-content>
-    
-    
-      <div style="position:relative;text-align:left;color:white;font-size:25px;font-weight:450;">
+<ion-content>
+  <div style="position:relative;text-align:left;color:white;font-size:25px;font-weight:450;">
     <img [src]="'https://makethechange.be/wp-content/uploads/2021/11/honeybee-2860488.jpg'" style="display:block;width:100%;height:250px;;margin-left:auto;margin-right:auto;" />
     <div style="position:absolute; bottom:8px; left:16px;">Envie d'investir dans un projet <strong>social </strong>qui contribue à la <strong>biodiversité</strong>?</div>
       </div>
-    
-       
-  
-  
-  
-        <h2 style="text-align:center;">Ce qui a déjà été réalisé</h2>
-          
-        <ion-card>
-        <ion-grid>
-          <ion-row>
-            <ion-col size="8">
-              <strong>Nombre d'abeilles adoptées</strong>
-            </ion-col>
-            <ion-col>
-              1500
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="8">
-              <strong>Nombre de contributeurs</strong>
-            </ion-col>
-            <ion-col>
-              373
-            </ion-col>
-          </ion-row>
-        
-        <ion-row>
-          <ion-col size="8">
-            <strong>Montant total des dons</strong>
-          </ion-col>
-          <ion-col>
-            755€
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>    
-  
- 
-                 
       
-        <h2 style="text-align:center">Les projets d'implentation</h2>
   
-        
-        <ion-card>
-          <ion-card-header>
-            <ion-card-subtitle>Une ruche humaine</ion-card-subtitle>
-            <ion-card-title>Prison de Nivelles</ion-card-title>
-          </ion-card-header>
-          <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg'" />
-          <ion-card-content>
-    Immergée au centre de la prison, la ruche ...
-          </ion-card-content>
-          <ion-button style="color: white" expand="block" [routerLink]="['/contact-card']">
-            Découvrir ce projet
-          </ion-button>
-        </ion-card>
-  
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Une ruche scolaire</ion-card-subtitle>
-          <ion-card-title>Ecole communale de Plancenoit</ion-card-title>
-        </ion-card-header>
-        <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/unnamed-2.png'"/>
-        <ion-card-content>
-  Immergée au centre de l'école, la ruche ...
-        </ion-card-content>
-        <ion-button style="color: white" expand="block" [routerLink]="['/contact-card']">
-          Découvrir ce projet
-        </ion-button>
-      </ion-card>
 
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Une ruche sociale</ion-card-subtitle>
-          <ion-card-title>Les Cailloux asbl</ion-card-title>
-        </ion-card-header>
-        <img [src]="'https://www.lescailloux.be/image/cailloux12%20.jpg'"/>
-        <ion-card-content>
-  Immergée au centre de l'école, la ruche ...
-        </ion-card-content>
-        <ion-button style="color: white" expand="block" [routerLink]="['/ficheprojet']">
-          Découvrir ce projet
-        </ion-button>
-      </ion-card>
-  
-  
-    
-  
-       
-  </ion-content>
+
+  <h2 style="margin-left: 16px" style="text-align:center">
+    Ce qui a déjà été réalisé
+  </h2>
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <strong>Nombre d'abeilles adoptées</strong>
+        </ion-col>
+        <ion-col> 1500 </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          <strong
+            >Montant total investit sur la plateforme par ses
+            utilisateurs</strong
+          >
+        </ion-col>
+        <ion-col> 50€ </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <h2 style="margin-left: 16px" style="text-align:center">Les projets d'implentation</h2>
+
+  <ion-card *ngFor="let project of projects">
+    <ion-card-header>
+      <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{project.title}}</ion-card-title>
+    </ion-card-header>
+    <img [src]="project?.imageUrl" />
+    <ion-card-content> {{project?.description}} </ion-card-content>
+    <ion-button
+      style="color: white"
+      expand="block"
+      (click)="openProject(project)"
+    >
+      Découvrir ce projet
+    </ion-button>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Suivez vos stats !</ion-card-subtitle>
+      <ion-card-title>Mes Projets</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Découvrir vos projets et leurs vertus sur la biodiversité.
+    </ion-card-content>
+    <ion-button
+      style="color: white"
+      expand="block"
+      [routerLink]="['/app/user/friends']"
+    >
+      Voir
+    </ion-button>
+  </ion-card>
+</ion-content>

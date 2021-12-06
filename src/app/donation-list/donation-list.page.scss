@@ -1,0 +1,177 @@
+ion-content {
+    --background: #f9f9f9;
+  }
+  ion-segment {
+    //   width: auto;
+    margin: 16px 16px;
+    //   margin-bottom: 16px;
+    ion-segment-button {
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.03);
+      margin-right: 8px;
+      --background: var(--ion-color-light);
+      --background-checked: #fff;
+      --color-checked: var(--ion-color-primary);
+      border-radius: 8px;
+      --indicator-height: 0px;
+      text-transform: capitalize;
+      font-size: 1em;
+      font-weight: bold;
+      // overflow: hidden;
+    }
+  }
+  .leaders {
+    margin: 16px;
+    margin-top: 20px;
+    // border: 1px solid red;
+    background: #fff;
+    padding: 20px 0px;
+    border-radius: 16px;
+    box-shadow: 0px 0px 16px rgb(#222, 0.02);
+  
+    .title {
+      margin: 0px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: var(--ion-color-secondary);
+      text-transform: capitalize;
+    }
+    ion-col {
+      text-align: center;
+      padding: 0px;
+      // border: 1px solid red;
+      div {
+        display: inline-block;
+        width: 110px;
+        // border: 1px solid red;
+        position: relative;
+  
+        img {
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          border: 2px solid var(--ion-color-secondary);
+        }
+  
+        .rank {
+          height: 22px;
+          width: 22px;
+          border: 2px solid var(--ion-color-light);
+          border-radius: 50%;
+          padding: 3px;
+  
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+  
+          background: var(--ion-color-primary);
+          color: #fff;
+          font-size: 12px;
+          font-weight: bold;
+  
+          position: absolute;
+          top: 44px;
+          right: 28px;
+        }
+  
+        h2 {
+          font-weight: bold;
+          font-size: 1em;
+          text-transform: capitalize;
+          text-align: center;
+          margin: 8px 0px;
+          // color: var(--ion-color-secondary);
+        }
+  
+        .points {
+          // box-shadow: 0px 0px 16px rgb(#222, 0.1);
+          padding: 4px 16px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 6px;
+          margin-bottom: 4px;
+          font-weight: bold;
+          color: #fff;
+          font-size: 1em;
+          background: var(--ion-color-secondary);
+        }
+      }
+  
+      .first {
+        img {
+          height: 80px;
+          width: 80px;
+          border-radius: 50%;
+        }
+  
+        .rank {
+          top: 64px;
+          right: 28px;
+        }
+      }
+    }
+  }
+  
+  ion-list {
+    margin: 16px;
+    margin-bottom: 100px;
+    background: transparent;
+    ion-item {
+      --background: #fff;
+      border-radius: 16px;
+      box-shadow: 0px 0px 16px rgb(#222, 0.03);
+      margin-top: 8px;
+      h2 {
+        //font-weight: bold;
+        font-size: 1em;
+      }
+  
+      .points {
+        //background: var(--ion-color-light);
+        padding: 6px 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        margin-bottom: 4px;
+        font-weight: bold;
+        color: var(--ion-color-primary);
+        font-size: 1.2em;
+      }
+      .avatar {
+        display: inline-block;
+        max-width: 50px;
+        // border: 1px solid red;
+        position: relative;
+        // background: red;
+        margin-top: 4px;
+        img {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          border: 2px solid var(--ion-color-secondary);
+        }
+  
+        .rank {
+          height: 22px;
+          width: 22px;
+          border: 2px solid var(--ion-color-light);
+          border-radius: 50%;
+          padding: 3px;
+  
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+  
+          color: #fff;
+          font-size: 12px;
+          font-weight: bold;
+  
+          position: absolute;
+          bottom: 0px;
+          right: -5px;
+          background: var(--ion-color-primary);
+        }
+      }
+    }
+  }

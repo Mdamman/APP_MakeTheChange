@@ -1,141 +1,141 @@
-<ion-header >
-  <ion-toolbar color= "primary">
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Nombre de points :
-    </ion-title>
-  <p slot="end" style="color: white; margin-right: 40px;">150</p>
+    <ion-title> Votre profil </ion-title>
+    <ion-buttons slot="end">
+      <ion-button> {{counter}} pts</ion-button>
+    </ion-buttons>
+    <!-- <p slot="end" style="color: white; margin-right: 30px">{{counter}} pts</p> -->
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  
-  <img [src]="'https://makethechange.be/wp-content/uploads/2021/10/beekeeper-2650663-scaled.jpg'" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
-    
-  <div style="text-align:center; margin-right: 30px; margin-left: 30px;">
-    <h1 style="color:#000000;">
-     Votre contribution
-    </h1>
-    
+  <img
+    [src]="'https://makethechange.be/wp-content/uploads/2021/10/beekeeper-2650663-scaled.jpg'"
+    style="
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    "
+  />
+
+  <div style="text-align: center; margin-right: 30px; margin-left: 30px">
+    <h1 style="color: #000000">Votre Contribution</h1>
   </div>
-  
 
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col> <ion-button>Profil</ion-button> </ion-col>
+      <ion-col> <ion-button>Carte</ion-button> </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <ion-card class="ion-padding">
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-label>
+          <p>Points</p>
+          <h2>{{counter * 1}}</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Ruche</p>
+          <h2>{{counter * 0.07 | number : '1.2-2'}}</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Abeilles</p>
+          <h2>{{counter * 44.33 | number : '1.2-2'}}</h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-label>
+          <p>Cire</p>
+          <h2>{{counter * 1.5 | number : '1.2-2'}} g</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Propolis</p>
+          <h2>{{counter * 0.06 | number : '1.2-2'}}</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Miel</p>
+          <h2>{{counter * 2.24 | number : '1.2-2'}}g</h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Habeebee/Abeille Mielifère Européenne</ion-card-subtitle>
-          <ion-card-title>Prison de Nivelles</ion-card-title>
-          
-        </ion-card-header>
-  
-        
+  <ion-card *ngFor="let project of projects">
+    <ion-card-header>
+      <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{project?.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-label>
+          <p>Points</p>
+          <h2>{{project?.userAmount * 1}}</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Ruche</p>
+          <h2>{{project?.userAmount * 0.07 | number : '1.2-2'}}</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Abeilles</p>
+          <h2>{{project?.userAmount * 44.33 | number : '1.2-2'}}</h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-label>
+          <p>Cire</p>
+          <h2>{{project?.userAmount * 1.5 | number : '1.2-2'}} g</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Propolis</p>
+          <h2>{{project?.userAmount * 0.06 | number : '1.2-2'}}</h2>
+        </ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>
+          <p>Miel</p>
+          <h2>{{project?.userAmount * 2.24 | number : '1.2-2'}}g</h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
 
-        <ion-grid>
-        
-          <ion-row>
-            <ion-col size="8">
-              <strong>Votre nombre d'abeilles</strong>
-            </ion-col>
-            <ion-col>
-              1000
-            </ion-col>
-            <ion-col>
-              /
-            </ion-col>
-            <ion-col>
-              60000
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-            <strong>Cire</strong>
-            </ion-col>
-            <ion-col>
-             <strong>Miel</strong>
-            </ion-col>
-            <ion-col>
-              <strong>Propolis</strong>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              200gr
-            </ion-col>
-            <ion-col>
-              50gr
-            </ion-col>
-            <ion-col>
-              2gr
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="8">
-              <strong>Nombre de fleurs butinées</strong>
-            </ion-col>
-            <ion-col>
-              500250 fleurs
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="8">
-              <strong>Montant du don</strong>
-            </ion-col>
-            <ion-col>
-              50€
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+    
+  </ion-card>
 
-        <ion-card-content>
-          Votre don à permis de financer l'équivalent de 1000 abeilles. Mais en plus du financement de la ruche, vous avez : 
-          <ion-row class="user-preferences-wrapper">
-            <ion-col size="12">
-              <h4 class="preference-name">Impact social et éducatif:</h4>
-              <p class="preference-value">
-                Les savons et autres produits sont emballés par la prison de Nivelles.
-                La ruche possède une vitre pour observer la colonie sans déranger la ruche.															
-                2 à 4 kg de miel par an sont offert par la ruche.
-              </p>
-            </ion-col>
-            <ion-col size="12">
-              <h4 class="preference-name">Impact Environnemental:</h4>
-              <p class="preference-value">
-          Le cycle des produits est entièrement local.		
-          La cire et la propolis sont des déchets de la ruche et ceux-ci sont utilisés directement dans la fabrication des produits.															
-          
-              </p>
-            </ion-col>
-            <ion-col size="12">
-              <h4 class="preference-name">Impact sur la biodiversité locale:</h4>
-              <p class="preference-value">
-                Le lieu d'implémentation de la ruche est étudié pour éviter la surpopullation des abeilles.
-                Respect du cycle de l'abeille et minimisation des intéractions avec celle-ci.															
-                La ruche Kenyanne adopte un modèle plus proche de la nature et respectueux de l'abeille.															
-                  
-              </p>
-            </ion-col>
-          </ion-row>
-                  </ion-card-content>
+  <h2 style="margin-left: 16px">Suggestions</h2>
 
-      </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Habeebee</ion-card-subtitle>
+      <ion-card-title>Ecole de plancenoit</ion-card-title>
+    </ion-card-header>
 
-
-      <h2 style="margin-left:25px;">Découvrez d'autres projets</h2>
-      
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Habeebee</ion-card-subtitle>
-          <ion-card-title>Ecole de plancenoit</ion-card-title>
-        </ion-card-header>
-  
-        <ion-card-content>
-Vous n'avez pas d'abeilles dans cette école.
-        </ion-card-content>
-        <ion-button>Je souhaite contribuer</ion-button>
-      </ion-card>
-
-      
+    <ion-card-content>
+      Vous n'avez pas d'abeilles dans cette école.
+    </ion-card-content>
+    <ion-button>Achetez-en !</ion-button>
+  </ion-card>
 </ion-content>

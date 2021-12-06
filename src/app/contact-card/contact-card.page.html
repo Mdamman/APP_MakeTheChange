@@ -10,57 +10,46 @@
   <ion-row class="user-details-wrapper">
     <ion-col size="4">
       <app-aspect-ratio [ratio]="{w: 1, h: 1}">
-        <app-image-shell class="user-avatar" animation="spinner" [src]="'https://makethechange.be/wp-content/uploads/2021/11/ezgif.com-gif-maker.jpg'" [alt]="'notification image'"></app-image-shell>
+        <app-image-shell
+          class="user-avatar"
+          animation="spinner"
+          [src]="project?.imageUrl"
+          [alt]="'project image'"
+        ></app-image-shell>
       </app-aspect-ratio>
     </ion-col>
     <ion-col class="user-info-wrapper" size="8">
-      <h3 class="user-name">Prison de Nivelles</h3>
-      <h5 class="user-handle">Ruche Kenyanne</h5>
+      <h3 class="user-name">{{project?.title}}</h3>
+      <h5 class="user-handle">{{project?.subtitle}}</h5>
     </ion-col>
     <ion-col class="user-stats-wrapper" size="6">
-      <span class="user-stat-value">7</span>
-      <span class="user-stat-name">Contributeurs</span>
+      <span class="user-stat-value">{{donations?.length}}</span>
+      <span class="user-stat-name">Contributions</span>
     </ion-col>
     <ion-col class="user-stats-wrapper" size="6">
-      <span class="user-stat-value">50€</span>
+      <span class="user-stat-value">{{counter}}€</span>
       <span class="user-stat-name">récoltés</span>
     </ion-col>
     <ion-col size="12">
-      <p class="user-bio">
-Implenter une ruche au centre d'une prison....
-      </p>
+      <p class="user-bio">{{project?.description}}</p>
     </ion-col>
   </ion-row>
   <ion-row class="user-preferences-wrapper">
     <ion-col size="12">
       <h4 class="preference-name">Impact social et éducatif</h4>
-      <p class="preference-value">
-        Les savons et autres produits sont emballés par la prison de Nivelles.
-        La ruche possède une vitre pour observer la colonie sans déranger la ruche.															
-        2 à 4 kg de miel par an sont offert par la ruche.
-      </p>
+      <p class="preference-value">{{project?.socialEducationalImpact}}</p>
     </ion-col>
     <ion-col size="12">
       <h4 class="preference-name">Impact Environnemental</h4>
-      <p class="preference-value">
-Le cycle des produits est entièrement local.		
-La cire et la propolis sont des déchets de la ruche et ceux-ci sont utilisés directement dans la fabrication des produits.															
-
-      </p>
+      <p class="preference-value">{{project?.environmentalImpact}}</p>
     </ion-col>
     <ion-col size="12">
       <h4 class="preference-name">Impact sur la biodiversité locale</h4>
-      <p class="preference-value">
-        Le lieu d'implémentation de la ruche est étudié pour éviter la surpopullation des abeilles.
-        Respect du cycle de l'abeille et minimisation des intéractions avec celle-ci.															
-				La ruche Kenyanne adopte un modèle plus proche de la nature et respectueux de l'abeille.															
-					
-      </p>
+      <p class="preference-value">{{project?.biodiversityImpact}}</p>
     </ion-col>
   </ion-row>
 
-  <ion-button style="color: white;">
-    Faire un don
+  <ion-button style="color: white" (click)="donate(project)">
+    Adopter des abeilles
   </ion-button>
-
 </ion-content>

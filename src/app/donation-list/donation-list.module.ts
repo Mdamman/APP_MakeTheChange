@@ -1,23 +1,25 @@
-import { IonicModule } from "@ionic/angular";
-import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
 
-import { ContactCardPage } from "./contact-card.page";
-import { ComponentsModule } from "../components/components.module";
+import { IonicModule } from "@ionic/angular";
+
+import { DonationListPageRoutingModule } from "./donation-list-routing.module";
+
+import { DonationListPage } from "./donation-list.page";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../../environments/environment";
 import { DonateService } from "../donate/donate.service";
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
-    ComponentsModule,
-    RouterModule.forChild([{ path: "", component: ContactCardPage }]),
+    FormsModule,
+    IonicModule,
     AngularFireModule.initializeApp(environment.firebase),
+    DonationListPageRoutingModule,
   ],
-  declarations: [ContactCardPage],
+  declarations: [DonationListPage],
   providers: [DonateService],
 })
-export class ContactCardPageModule {}
+export class DonationListPageModule {}

@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Participez au projet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="margin-top: 40px">
+    <ion-col class="title ion-no-padding">
+      <ion-label class="ion-text-center">
+        <h2>Choisissez le montant</h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-card>
+    <ion-row style="margin: 30px 0px" class="amount">
+      <ion-col class="title ion-no-padding">
+        <ion-label class="ion-text-center">
+          <h2><small>€</small> {{counter}}</h2>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-row class="amount ion-padding-horizontal">
+    <ion-col class="ion-text-center">
+      <ion-button size="large" expand="block" (click)="add()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button size="large" expand="block" (click)="remove()">
+        <ion-icon slot="icon-only" name="remove"></ion-icon
+      ></ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top: 40px">
+    <ion-col class="title ion-no-padding">
+      <ion-label class="ion-text-center">
+        <h2>Impact de votre don</h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="stats">
+    <ion-col>
+      <ion-label>
+        <p>Points</p>
+        <h2>{{counter * 1}}</h2>
+      </ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label>
+        <p>Ruche</p>
+        <h2>{{counter * 0.07 | number : '1.2-2'}} %</h2>
+      </ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label>
+        <p>Abeilles</p>
+        <h2>{{counter * 44.33 | number : '1.2-2'}}</h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="stats">
+    <ion-col>
+      <ion-label>
+        <p>Cire</p>
+        <h2>{{counter * 1.5 | number : '1.2-2'}} g</h2>
+      </ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label>
+        <p>Propolis</p>
+        <h2>{{counter * 0.06 | number : '1.2-2'}} g</h2>
+      </ion-label>
+    </ion-col>
+    <ion-col>
+      <ion-label>
+        <p>Miel</p>
+        <h2>{{counter * 2.24 | number : '1.2-2'}} g</h2>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="validate()" size="large" expand="block">
+    Valider
+  </ion-button>
+</ion-footer>

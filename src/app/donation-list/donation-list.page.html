@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Donations Board</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- LEADERBORAD WINNERS -->
+  <ion-row class="leaders" *ngIf="donations?.length >2">
+    <ion-col>
+      <!-- <h2 class="title">leaderboard</h2> -->
+      <div class="second" *ngIf="donations[1]">
+        <img [src]="donations[1]?.photoUrl" alt="" />
+        <span class="rank">2</span>
+        <h2>{{donations[1]?.userName}}</h2>
+        <span class="points">{{donations[1]?.amount}}</span>
+      </div>
+
+      <div class="first" *ngIf="donations[0]">
+        <img [src]="donations[0]?.photoUrl" alt="" />
+        <span class="rank">1</span>
+        <h2>{{donations[0]?.userName}}</h2>
+        <span class="points">{{donations[0]?.amount}}</span>
+      </div>
+      <div class="third" *ngIf="donations[2]">
+        <img [src]="donations[2]?.photoUrl" alt="" />
+        <span class="rank">3</span>
+        <h2>{{donations[2]?.userName}}</h2>
+        <span class="points">{{donations[2]?.amount}}</span>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <!-- PLAYERS LIST -->
+  <ion-list lines="none">
+    <!-- PLAYER ITEM TEMPALTE -->
+    <ion-item *ngFor="let donation of donations; let i =index">
+      <div slot="start" class="avatar">
+        <img [src]="donation?.photoUrl" alt="" />
+        <span class="rank">{{i+1}}</span>
+      </div>
+
+      <ion-label>
+        <h2>{{donation?.userName}}</h2>
+        <!-- <p>{{donation?.userId}}</p> -->
+      </ion-label>
+
+      <span slot="end" class="points"
+        ><small>€</small> {{donation?.amount}}
+      </span>
+    </ion-item>
+  </ion-list>
+</ion-content>

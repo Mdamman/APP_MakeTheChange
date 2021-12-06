@@ -26,7 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserTransferStateModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({backButtonText: 'Retour'}),
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,

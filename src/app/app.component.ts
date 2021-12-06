@@ -1,90 +1,80 @@
-import { Component } from '@angular/core';
-import { SplashScreen } from '@capacitor/splash-screen';
-import { SeoService } from './utils/seo/seo.service';
-import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { HistoryHelperService } from './utils/history-helper.service';
+import { Component } from "@angular/core";
+import { SplashScreen } from "@capacitor/splash-screen";
+import { SeoService } from "./utils/seo/seo.service";
+import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
+import { HistoryHelperService } from "./utils/history-helper.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
+  selector: "app-root",
+  templateUrl: "app.component.html",
   styleUrls: [
-    './side-menu/styles/side-menu.scss',
-    './side-menu/styles/side-menu.shell.scss',
-    './side-menu/styles/side-menu.responsive.scss'
-  ]
+    "./side-menu/styles/side-menu.scss",
+    "./side-menu/styles/side-menu.shell.scss",
+    "./side-menu/styles/side-menu.responsive.scss",
+  ],
 })
 export class AppComponent {
   appPages = [
     {
-      title: 'Profil',
-      url: '/firebase/auth/profile',
-      ionicIcon: 'person-outline'
+      title: "Categories",
+      url: "/app/categories",
+      ionicIcon: "list-outline",
     },
     {
-      title: 'Tableau de bord',
-      url: '/app/user/friends',
-      ionicIcon: 'id-card-outline'
+      title: "Tableau de bord",
+      url: "/app/user",
+      ionicIcon: "person-outline",
     },
     {
-      title: 'Contreparties',
-      url: '/app/categories',
-      ionicIcon: 'bag-handle-outline'
+      title: "Projet Nivelles",
+      url: "/contact-card",
+      customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
     },
-    
     {
-      title: 'Projet Nivelles',
-      url: '/contact-card',
-      customIcon: './assets/custom-icons/side-menu/contact-card.svg'
+      title: "Notifications",
+      url: "/app/notifications",
+      ionicIcon: "notifications-outline",
     },
-    
     {
-      title: 'Articles',
-      url: '/posts',
-      ionicIcon: 'newspaper-outline'
+      title: "Profil",
+      url: "/firebase/auth/profile",
+      ionicIcon: "list-outline",
     },
-    
     {
-      title: 'Notifications',
-      url: '/app/notifications',
-      ionicIcon: 'notifications-outline'
+      title: "Donations",
+      url: "/donation-list",
+      ionicIcon: "list-outline",
     },
-
-    {
-      title: 'Se déconnecter',
-      url: '/firebase/auth/profile',
-      ionicIcon: 'list-outline'
-    }
-    
   ];
   accountPages = [
     {
-      title: 'Log In',
-      url: '/auth/login',
-      ionicIcon: 'log-in-outline'
+      title: "Log In",
+      url: "/auth/login",
+      ionicIcon: "log-in-outline",
     },
     {
-      title: 'Sign Up',
-      url: '/auth/signup',
-      ionicIcon: 'person-add-outline'
+      title: "Sign Up",
+      url: "/auth/signup",
+      ionicIcon: "person-add-outline",
     },
     {
-      title: 'Tutorial',
-      url: '/walkthrough',
-      ionicIcon: 'school-outline'
+      title: "Tutorial",
+      url: "/walkthrough",
+      ionicIcon: "school-outline",
     },
     {
-      title: 'Getting Started',
-      url: '/getting-started',
-      ionicIcon: 'rocket-outline'
+      title: "Getting Started",
+      url: "/getting-started",
+      ionicIcon: "rocket-outline",
     },
     {
-      title: '404 page',
-      url: '/page-not-found',
-      ionicIcon: 'alert-circle-outline'
-    }
+      title: "404 page",
+      url: "/page-not-found",
+      ionicIcon: "alert-circle-outline",
+    },
   ];
 
-  textDir = 'ltr';
+  textDir = "ltr";
 
   // Inject HistoryHelperService in the app.components.ts so its available app-wide
   constructor(
@@ -98,18 +88,18 @@ export class AppComponent {
 
   async initializeApp() {
     try {
-     await SplashScreen.hide();
+      await SplashScreen.hide();
     } catch (err) {
-     console.log('This is normal in a browser', err);
+      console.log("This is normal in a browser", err);
     }
   }
 
   setLanguage() {
     // this language will be used as a fallback when a translation isn't found in the current language
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang("en");
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
-    this.translate.use('en');
+    this.translate.use("en");
 
     // this is to determine the text direction depending on the selected language
     // for the purpose of this example we determine that only arabic and hebrew are RTL.
@@ -117,5 +107,4 @@ export class AppComponent {
     //   this.textDir = (event.lang === 'ar' || event.lang === 'iw') ? 'rtl' : 'ltr';
     // });
   }
-
 }
