@@ -18,6 +18,13 @@ import { first } from "rxjs/operators";
 })
 export class AppComponent {
   appPages = [
+    
+    {title: "Accueil",
+    url: "/app/user/profil",
+    ionicIcon: "home-outline",
+  },
+
+    
     {
       title: "Categories",
       url: "/app/categories",
@@ -26,12 +33,17 @@ export class AppComponent {
     {
       title: "Tableau de bord",
       url: "/app/user",
-      ionicIcon: "person-outline",
-    },
-    {
-      title: "Projet Nivelles",
-      url: "/contact-card",
       customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
+    },
+    
+    {title: "Contreparties",
+    url: "/app/categories",
+    ionicIcon: "bag-handle-outline",},
+    
+    {
+      title: "Blog",
+      url: "/posts",
+      ionicIcon: "reader-outline",
     },
     {
       title: "Notifications",
@@ -41,7 +53,7 @@ export class AppComponent {
     {
       title: "Profil",
       url: "/firebase/auth/profile",
-      ionicIcon: "list-outline",
+      ionicIcon: "person-outline",
     },
     {
       title: "Donations",
