@@ -112,15 +112,6 @@ const routes: Routes = [
         (m) => m.VideoPlaylistPageModule
       ),
   },
-
-  {
-    path: 'posts',
-    loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsPageModule)
-  },
-  {
-    path: 'posts/:id',
-    loadChildren: () => import('./pages/post/post.module').then( m => m.PostPageModule)
-  },
   {
     path: "donate",
     loadChildren: () =>
@@ -133,7 +124,17 @@ const routes: Routes = [
         (m) => m.DonationListPageModule
       ),
   },
-  
+  {
+    path: "edit-profile",
+    loadChildren: () =>
+      import("./edit-profile/edit-profile.module").then(
+        (m) => m.EditProfilePageModule
+      ),
+  },
+  {
+    path: "**",
+    redirectTo: "page-not-found",
+  },
 ];
 @NgModule({
   imports: [
@@ -142,7 +143,6 @@ const routes: Routes = [
       initialNavigation: "enabled",
       scrollPositionRestoration: "enabled",
       anchorScrolling: "enabled",
-      
     }),
   ],
   exports: [RouterModule],

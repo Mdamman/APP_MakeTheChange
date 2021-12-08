@@ -3,7 +3,10 @@ import { SplashScreen } from "@capacitor/splash-screen";
 import { SeoService } from "./utils/seo/seo.service";
 import { TranslateService, LangChangeEvent } from "@ngx-translate/core";
 import { HistoryHelperService } from "./utils/history-helper.service";
-
+import { DonateService } from "./donate/donate.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import firebase from "firebase/app";
+import { first } from "rxjs/operators";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -15,48 +18,41 @@ import { HistoryHelperService } from "./utils/history-helper.service";
 })
 export class AppComponent {
   appPages = [
-    
     {
-      title: "Accueil",
-      url: "/app/user/profil",
-      ionicIcon: "home-outline",
+      title: "Categories",
+      url: "/app/categories",
+      ionicIcon: "list-outline",
     },
-
     {
       title: "Tableau de bord",
       url: "/app/user",
+      ionicIcon: "person-outline",
+    },
+    {
+      title: "Projet Nivelles",
+      url: "/contact-card",
       customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
     },
-    
-    {
-      title: "Contreparties",
-      url: "/app/categories",
-      ionicIcon: "bag-handle-outline",
-    },
-    
-    {
-      title: "Blog",
-      url: "/posts",
-      ionicIcon: "reader-outline",
-    },
-    
     {
       title: "Notifications",
       url: "/app/notifications",
       ionicIcon: "notifications-outline",
     },
-
     {
       title: "Profil",
       url: "/firebase/auth/profile",
-      ionicIcon: "person-outline",
+      ionicIcon: "list-outline",
     },
-    
     {
       title: "Donations",
       url: "/donation-list",
       ionicIcon: "list-outline",
     },
+    // {
+    //   title: "Edit Profile",
+    //   url: "/edit-profile",
+    //   ionicIcon: "person-outline",
+    // },
   ];
   accountPages = [
     {
@@ -87,15 +83,34 @@ export class AppComponent {
   ];
 
   textDir = "ltr";
-
+  profile: any;
+  currentUser: firebase.User;
   // Inject HistoryHelperService in the app.components.ts so its available app-wide
   constructor(
     public translate: TranslateService,
     public historyHelper: HistoryHelperService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private firestore: DonateService,
+    private angularFire: AngularFireAuth
   ) {
     this.initializeApp();
     this.setLanguage();
+
+    this.angularFire.onAuthStateChanged((user) => {
+      if (user) {
+        this.currentUser = user;
+        this.fetchProfile();
+      } else {
+        this.currentUser = null;
+      }
+    });
+  }
+
+  async fetchProfile() {
+    this.profile = await this.firestore
+      .getDocument("users", this.currentUser.uid)
+      .pipe(first())
+      .toPromise();
   }
 
   async initializeApp() {
@@ -119,6 +134,4 @@ export class AppComponent {
     //   this.textDir = (event.lang === 'ar' || event.lang === 'iw') ? 'rtl' : 'ltr';
     // });
   }
-
-  
 }

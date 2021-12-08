@@ -1,9 +1,67 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>edit-profile</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>User Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveProfile()">Done</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-row>
+    <ion-col class="ion-text-center ion-padding">
+      <img
+        (click)="takePicture()"
+        style="height: 100px; width: 100px; border-radius: 50px"
+        [src]="avatar ? avatar : 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y'"
+      />
+    </ion-col>
+  </ion-row>
+  <form [formGroup]="profileForm">
+    <ion-list class="profile-form">
+      <ion-item>
+        <ion-label>First Name</ion-label>
+        <ion-input color="medium" formControlName="firstName"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label>Last Name</ion-label>
+        <ion-input color="medium" formControlName="lastName"></ion-input>
+      </ion-item>
+
+      <ion-list-header>
+        <ion-label>About you</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-textarea
+          rows="4"
+          placeholder="Brief about yourself here"
+          formControlName="about"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select placeholder="Select One" formControlName="gender">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-list-header>
+        <ion-label>Location</ion-label>
+      </ion-list-header>
+
+      <ion-item>
+        <ion-input
+          placeholder="i.e city, country"
+          formControlName="location"
+          color="medium"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

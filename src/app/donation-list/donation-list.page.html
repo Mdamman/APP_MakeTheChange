@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Donations Board</ion-title>
   </ion-toolbar>
@@ -39,12 +39,18 @@
     <!-- PLAYER ITEM TEMPALTE -->
     <ion-item *ngFor="let donation of donations; let i =index">
       <div slot="start" class="avatar">
-        <img [src]="donation?.photoUrl" alt="" />
+        <img
+          [src]="donation?.profile?.avatar ?donation?.profile?.avatar : donation?.photoUrl"
+          alt=""
+        />
         <span class="rank">{{i+1}}</span>
       </div>
 
       <ion-label>
-        <h2>{{donation?.userName}}</h2>
+        <h2 *ngIf="!donation?.profile?.firstName">{{donation?.userName}}</h2>
+        <h2 *ngIf="donation?.profile?.firstName">
+          {{donation?.profile?.firstName}} {{donation?.profile?.lastName}}
+        </h2>
         <!-- <p>{{donation?.userId}}</p> -->
       </ion-label>
 

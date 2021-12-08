@@ -5,6 +5,7 @@ import { LoadingController, NavController } from "@ionic/angular";
 import { AlertController } from "@ionic/angular";
 import { DonateService } from "./donate.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { first } from "rxjs/operators";
 
 @Component({
   selector: "app-donate",
@@ -15,6 +16,7 @@ export class DonatePage implements OnInit {
   counter: number;
   currentUser: firebase.User;
   project: any;
+  profile: any;
 
   constructor(
     private angularFire: AngularFireAuth,
@@ -36,11 +38,18 @@ export class DonatePage implements OnInit {
     this.angularFire.onAuthStateChanged((user) => {
       if (user) {
         this.currentUser = user;
-        console.log(user);
+        this.fetchProfile();
       } else {
         this.currentUser = null;
       }
     });
+  }
+
+  async fetchProfile() {
+    this.profile = await this.firestore
+      .getDocument("users", this.currentUser.uid)
+      .pipe(first())
+      .toPromise();
   }
 
   ngOnInit(): void {
@@ -73,7 +82,7 @@ export class DonatePage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: "my-custom-class",
-      message: "Quelques instants, nous implémentons vos abeilles...",
+      message: "Please wait...",
       duration: 2000,
     });
     await loading.present();
@@ -87,10 +96,10 @@ export class DonatePage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: "my-custom-class",
-      header: "Félicitations !",
+      header: "félicitations",
       message:
-        "Rendez-vous sur votre tableau de bord pour visualiser votre impact",
-      buttons: ["Vers mon tableau de bord"],
+        " rendez-vous sur votre tableau de bordpour visualiser votre impact",
+      buttons: ["Go to Dashboard"],
     });
 
     await alert.present();
@@ -111,6 +120,8 @@ export class DonatePage implements OnInit {
       photoUrl: this.currentUser?.photoURL
         ? this.currentUser?.photoURL
         : "https://i.pravatar.cc/300",
+
+      profile: this.profile,
     };
     return this.firestore.addDocument(`donations`, data);
   }
