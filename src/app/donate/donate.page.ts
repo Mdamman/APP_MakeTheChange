@@ -82,7 +82,7 @@ export class DonatePage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: "my-custom-class",
-      message: "Please wait...",
+      message: "Un instant, nous implémentons vos abeilles...",
       duration: 2000,
     });
     await loading.present();
@@ -96,10 +96,10 @@ export class DonatePage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: "my-custom-class",
-      header: "félicitations",
+      header: "Félicitations",
       message:
-        " rendez-vous sur votre tableau de bordpour visualiser votre impact",
-      buttons: ["Go to Dashboard"],
+        "Rendez-vous sur votre tableau de bord pour visualiser votre impact !",
+      buttons: ["Vers mon tableau de bord"],
     });
 
     await alert.present();
