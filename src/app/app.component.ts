@@ -27,7 +27,7 @@ export class AppComponent {
     
     {
       title: "Tableau de bord",
-      url: "/app/user",
+      url: "/app/user/friends",
       customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
     },
     
