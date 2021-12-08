@@ -26,11 +26,6 @@ export class AppComponent {
 
     
     {
-      title: "Categories",
-      url: "/app/categories",
-      ionicIcon: "list-outline",
-    },
-    {
       title: "Tableau de bord",
       url: "/app/user",
       customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
