@@ -111,6 +111,8 @@ export class DonatePage implements OnInit {
   addDonationToFirestore() {
     let data = {
       projectId: this.project?.id,
+      projectName: this.project?.title,
+      projectImage: this.project?.imageUrl,
       userId: this.currentUser?.email,
       userName: this.currentUser?.displayName
         ? this.currentUser?.displayName

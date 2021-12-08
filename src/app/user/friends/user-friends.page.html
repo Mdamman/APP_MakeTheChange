@@ -76,7 +76,7 @@
     </ion-row>
   </ion-card>
 
-  <ion-card *ngFor="let project of projects">
+  <ion-card *ngFor="let project of donated">
     <ion-card-header>
       <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
       <ion-card-title>{{project?.title}}</ion-card-title>
@@ -127,15 +127,14 @@
 
   <h2 style="margin-left: 16px">Suggestions</h2>
 
-  <ion-card>
+  <ion-card *ngFor="let project of suggested">
     <ion-card-header>
-      <ion-card-subtitle>Habeebee</ion-card-subtitle>
-      <ion-card-title>Ecole de plancenoit</ion-card-title>
+      <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{project?.title}}</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content>
-      Vous n'avez pas d'abeilles dans cette école.
-    </ion-card-content>
+    <ion-card-content> {{project?.description}} </ion-card-content>
     <ion-button>Achetez-en !</ion-button>
   </ion-card>
 </ion-content>
+

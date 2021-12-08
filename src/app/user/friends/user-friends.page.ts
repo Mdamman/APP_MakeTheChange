@@ -43,6 +43,8 @@ export class UserFriendsPage implements OnInit {
 
   //projects
   projects: any[];
+  suggested: any[];
+  donated: any[];
 
   // @HostBinding("class.is-shell") get isShell() {
   //   return this.data && this.data.isShell ? true : false;
@@ -59,11 +61,11 @@ export class UserFriendsPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadProjects();
+    // this.loadProjects();
     this.angularFire.onAuthStateChanged((user) => {
       if (user) {
         this.currentUser = user;
-        this.loadDonations();
+        this.loadProjects();
       } else {
         this.currentUser = null;
       }
@@ -89,14 +91,25 @@ export class UserFriendsPage implements OnInit {
     //     (error) => console.log(error)
     //   );
   }
+  loadProjects() {
+    this.firestore.getCollection("projects").subscribe((data) => {
+      this.projects = data.map((item) => {
+        item.totalContributors = 0;
+        item.totalAmount = 0;
+        item.userAmount = 0;
+        return item;
+      });
+
+      this.loadDonations();
+    });
+  }
 
   loadDonations() {
-    return this.firestore.getCollection("donations").subscribe((data) => {
+    this.firestore.getCollection("donations").subscribe((data) => {
       if (this.currentUser) {
         this.donations = data.filter(
           (donation) => donation.userId === this.currentUser.email
         );
-        console.log(this.donations);
 
         this.counter = this.donations.reduce((a, b) => a + b.amount, 0);
         this.projects.forEach((project) => {
@@ -107,57 +120,62 @@ export class UserFriendsPage implements OnInit {
           project.userAmount = sum ? sum : 0;
         });
 
-        console.log(this.counter);
+        this.donated = this.projects.filter(
+          (project) => project?.userAmount !== 0
+        );
+        this.suggested = this.projects.filter(
+          (project) => project?.userAmount === 0
+        );
       }
     });
   }
 
-  loadProjects() {
-    this.projects = [
-      {
-        id: "project001",
-        title: "Ecole communale de Plancenoit",
-        subtitle: "Une ruche scolaire",
-        imageUrl:
-          "https://makethechange.be/wp-content/uploads/2021/10/unnamed-2.png",
-        description: `Immergée au centre de l'école, la ruche ...`,
-        biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
-        surpopullation des abeilles. Respect du cycle de l'abeille et
-        minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
-        modèle plus proche de la nature et respectueux de l'abeille.`,
-        environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
-        des déchets de la ruche et ceux-ci sont utilisés directement dans la
-        fabrication des produits.`,
-        socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
-        La ruche possède une vitre pour observer la colonie sans déranger la
-        ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
-        totalContributors: 0,
-        totalAmount: 0,
-        userAmount: 0,
-      },
-      {
-        id: "project002",
-        title: "Prison de Nivelles",
-        subtitle: "Une ruche humaine",
-        imageUrl:
-          "https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg",
-        description: `Immergée au centre de la prison, la ruche ...`,
-        biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
-        surpopullation des abeilles. Respect du cycle de l'abeille et
-        minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
-        modèle plus proche de la nature et respectueux de l'abeille.`,
-        environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
-        des déchets de la ruche et ceux-ci sont utilisés directement dans la
-        fabrication des produits.`,
-        socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
-        La ruche possède une vitre pour observer la colonie sans déranger la
-        ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
-        totalContributors: 0,
-        totalAmount: 0,
-        userAmount: 0,
-      },
-    ];
-  }
+  // loadProjects() {
+  //   this.projects = [
+  //     {
+  //       id: "project001",
+  //       title: "Ecole communale de Plancenoit",
+  //       subtitle: "Une ruche scolaire",
+  //       imageUrl:
+  //         "https://makethechange.be/wp-content/uploads/2021/10/unnamed-2.png",
+  //       description: `Immergée au centre de l'école, la ruche ...`,
+  //       biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
+  //       surpopullation des abeilles. Respect du cycle de l'abeille et
+  //       minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
+  //       modèle plus proche de la nature et respectueux de l'abeille.`,
+  //       environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
+  //       des déchets de la ruche et ceux-ci sont utilisés directement dans la
+  //       fabrication des produits.`,
+  //       socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
+  //       La ruche possède une vitre pour observer la colonie sans déranger la
+  //       ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
+  //       totalContributors: 0,
+  //       totalAmount: 0,
+  //       userAmount: 0,
+  //     },
+  //     {
+  //       id: "project002",
+  //       title: "Prison de Nivelles",
+  //       subtitle: "Une ruche humaine",
+  //       imageUrl:
+  //         "https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg",
+  //       description: `Immergée au centre de la prison, la ruche ...`,
+  //       biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
+  //       surpopullation des abeilles. Respect du cycle de l'abeille et
+  //       minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
+  //       modèle plus proche de la nature et respectueux de l'abeille.`,
+  //       environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
+  //       des déchets de la ruche et ceux-ci sont utilisés directement dans la
+  //       fabrication des produits.`,
+  //       socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
+  //       La ruche possède une vitre pour observer la colonie sans déranger la
+  //       ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
+  //       totalContributors: 0,
+  //       totalAmount: 0,
+  //       userAmount: 0,
+  //     },
+  //   ];
+  // }
 
   // segmentChanged(ev): void {
   //   this.segmentValue = ev.detail.value;
