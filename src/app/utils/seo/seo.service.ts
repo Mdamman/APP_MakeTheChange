@@ -55,10 +55,10 @@ export class SeoService implements OnDestroy {
         });
       } else {
         // Set default SEO values here
-        currentRouteSeoData.title = 'Ionic Full Starter App';
+        currentRouteSeoData.title = 'MakeTheChange';
         currentRouteSeoData.description = 'Ionic 5 Full Starter App Template - by IonicThemes';
         currentRouteSeoData.keywords = '';
-        currentRouteSeoData.image = 'https://s3-us-west-2.amazonaws.com/ionicthemes/imgs/logofacebook.png';
+        currentRouteSeoData.image = 'https://makethechange.be/wp-content/uploads/2021/11/BEE-DIversity-6.png';
 
         this.setSeoMetaTags(currentRouteSeoData);
       }

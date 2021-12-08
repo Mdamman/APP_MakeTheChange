@@ -133,10 +133,7 @@ const routes: Routes = [
         (m) => m.DonationListPageModule
       ),
   },
-  {
-    path: "**",
-    redirectTo: "page-not-found",
-  },
+  
 ];
 @NgModule({
   imports: [

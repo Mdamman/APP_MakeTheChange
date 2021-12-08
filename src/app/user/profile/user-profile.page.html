@@ -13,10 +13,10 @@
   </style>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <div style="position:relative;text-align:left;color:white;font-size:25px;font-weight:450;">
     <img [src]="'https://makethechange.be/wp-content/uploads/2021/11/honeybee-2860488.jpg'" style="display:block;width:100%;height:250px;;margin-left:auto;margin-right:auto;" />
-    <div style="position:absolute; bottom:8px; left:16px;">Envie d'investir dans un projet <strong>social </strong>qui contribue à la <strong>biodiversité</strong>?</div>
+    <div style="position:absolute; bottom:8px; left:16px; text-shadow: black 0.1em 0.1em 0.2em; font-weight:400;">Envie d'investir dans un projet <strong>social </strong>qui contribue à la <strong>biodiversité</strong>?</div>
       </div>
       
   
@@ -26,7 +26,7 @@
     Ce qui a déjà été réalisé
   </h2>
 
-  <ion-card>
+  <ion-card style="background-color: white; ">
     <ion-grid>
       <ion-row>
         <ion-col size="8">
@@ -48,7 +48,7 @@
 
   <h2 style="margin-left: 16px" style="text-align:center">Les projets d'implentation</h2>
 
-  <ion-card *ngFor="let project of projects">
+  <ion-card *ngFor="let project of projects" style="background-color: white;">
     <ion-card-header>
       <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
       <ion-card-title>{{project.title}}</ion-card-title>
@@ -64,9 +64,9 @@
     </ion-button>
   </ion-card>
 
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
-      <ion-card-subtitle>Suivez vos stats !</ion-card-subtitle>
+      <ion-card-subtitle>Suivez votre impact !</ion-card-subtitle>
       <ion-card-title>Mes Projets</ion-card-title>
     </ion-card-header>
 

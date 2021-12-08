@@ -15,31 +15,43 @@ import { HistoryHelperService } from "./utils/history-helper.service";
 })
 export class AppComponent {
   appPages = [
+    
     {
-      title: "Categories",
-      url: "/app/categories",
-      ionicIcon: "list-outline",
+      title: "Accueil",
+      url: "/app/user/profil",
+      ionicIcon: "home-outline",
     },
+
     {
       title: "Tableau de bord",
       url: "/app/user",
-      ionicIcon: "person-outline",
-    },
-    {
-      title: "Projet Nivelles",
-      url: "/contact-card",
       customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
     },
+    
+    {
+      title: "Contreparties",
+      url: "/app/categories",
+      ionicIcon: "bag-handle-outline",
+    },
+    
+    {
+      title: "Blog",
+      url: "/posts",
+      ionicIcon: "reader-outline",
+    },
+    
     {
       title: "Notifications",
       url: "/app/notifications",
       ionicIcon: "notifications-outline",
     },
+
     {
       title: "Profil",
       url: "/firebase/auth/profile",
-      ionicIcon: "list-outline",
+      ionicIcon: "person-outline",
     },
+    
     {
       title: "Donations",
       url: "/donation-list",
@@ -107,4 +119,6 @@ export class AppComponent {
     //   this.textDir = (event.lang === 'ar' || event.lang === 'iw') ? 'rtl' : 'ltr';
     // });
   }
+
+  
 }
