@@ -114,14 +114,16 @@ export class DonatePage implements OnInit {
       projectName: this.project?.title,
       projectImage: this.project?.imageUrl,
       userId: this.currentUser?.email,
-      userName: this.currentUser?.displayName
+      userName: this.profile?.nickname
+        ? this.profile?.nickname
+        : this.currentUser?.displayName
         ? this.currentUser?.displayName
+        : this.profile?.firstName
+        ? this.profile?.firstName
         : this.currentUser?.email,
       amount: this.counter,
       timestamp: Date.now(),
-      photoUrl: this.currentUser?.photoURL
-        ? this.currentUser?.photoURL
-        : "https://i.pravatar.cc/300",
+      photoUrl: this.profile?.avatar ? this.profile?.avatar : "",
 
       profile: this.profile,
     };

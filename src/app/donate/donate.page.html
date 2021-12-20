@@ -28,12 +28,12 @@
 
   <ion-row class="amount ion-padding-horizontal">
     <ion-col class="ion-text-center">
-      <ion-button size="large" expand="block" (click)="add()">
+      <ion-button size="large" expand="block" shape="round" (click)="add()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-col>
     <ion-col>
-      <ion-button size="large" expand="block" (click)="remove()">
+      <ion-button size="large" expand="block" shape="round" (click)="remove()">
         <ion-icon slot="icon-only" name="remove"></ion-icon
       ></ion-button>
     </ion-col>
@@ -50,19 +50,37 @@
     <ion-col>
       <ion-label>
         <p>Points</p>
-        <h2>{{counter * 1}} <ion-icon src="./assets/custom-icons/food/points2.svg" style="font-size:16px"></ion-icon></h2>
+        <h2>
+          {{counter * 1}}
+          <ion-icon
+            src="./assets/custom-icons/food/points2.svg"
+            style="font-size: 16px"
+          ></ion-icon>
+        </h2>
       </ion-label>
     </ion-col>
     <ion-col>
       <ion-label>
         <p>Ruche</p>
-        <h2>{{counter * 0.07 | number : '1.2-2'}} % <ion-icon src="./assets/custom-icons/food/maison.svg" style="font-size:16px"></ion-icon></h2>
+        <h2>
+          {{counter * 0.07 | number : '1.2-2'}} %
+          <ion-icon
+            src="./assets/custom-icons/food/maison.svg"
+            style="font-size: 16px"
+          ></ion-icon>
+        </h2>
       </ion-label>
     </ion-col>
     <ion-col>
       <ion-label>
         <p>Abeilles</p>
-        <h2>{{counter * 44}} <ion-icon src="./assets/custom-icons/food/bee2.svg" style="font-size:16px"></ion-icon></h2>
+        <h2>
+          {{counter * 44}}
+          <ion-icon
+            src="./assets/custom-icons/food/bee2.svg"
+            style="font-size: 16px"
+          ></ion-icon>
+        </h2>
       </ion-label>
     </ion-col>
   </ion-row>
@@ -70,25 +88,43 @@
     <ion-col>
       <ion-label>
         <p>Cire</p>
-        <h2>{{counter * 1.5 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/cire.svg" style="font-size:16px"></ion-icon></h2>
+        <h2>
+          {{counter * 1.5 | number : '1.2-2'}} g
+          <ion-icon
+            src="./assets/custom-icons/food/cire.svg"
+            style="font-size: 16px"
+          ></ion-icon>
+        </h2>
       </ion-label>
     </ion-col>
     <ion-col>
       <ion-label>
         <p>Propolis</p>
-        <h2>{{counter * 0.06 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/propolis.svg" style="font-size:16px"></ion-icon></h2>
+        <h2>
+          {{counter * 0.06 | number : '1.2-2'}} g
+          <ion-icon
+            src="./assets/custom-icons/food/propolis.svg"
+            style="font-size: 16px"
+          ></ion-icon>
+        </h2>
       </ion-label>
     </ion-col>
     <ion-col>
       <ion-label>
         <p>Miel</p>
-        <h2>{{counter * 2.21 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/miel.svg" style="font-size:16px"></ion-icon></h2>
+        <h2>
+          {{counter * 2.21 | number : '1.2-2'}} g
+          <ion-icon
+            src="./assets/custom-icons/food/miel.svg"
+            style="font-size: 16px"
+          ></ion-icon>
+        </h2>
       </ion-label>
     </ion-col>
   </ion-row>
 </ion-content>
 <ion-footer>
-  <ion-button (click)="validate()" size="large" expand="block">
+  <ion-button (click)="validate()" size="large" expand="block" shape="round">
     Valider
   </ion-button>
 </ion-footer>
