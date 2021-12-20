@@ -1,0 +1,53 @@
+ion-slide {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+:host ::ng-deep .swiper-pagination {
+  .swiper-pagination-bullet {
+    width: 16px;
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--ion-color-secondary);
+  }
+}
+.imagediv {
+  height: 250px;
+  justify-content: flex-start;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  border-radius: 10px;
+  margin: 0px 16px;
+
+  box-shadow: 0px 0px 16px rgb(#222, 0.1);
+
+  .inner {
+    text-align: start;
+    margin: 16px;
+    .title {
+      font-weight: bold;
+      color: #f9f9f9;
+      font-size: 1em;
+      text-shadow: black 0.1em 0.1em 0.2em;
+    }
+    .category {
+      color: #fff;
+      text-transform: uppercase;
+      text-shadow: black 0.1em 0.1em 0.2em;
+    }
+
+    .date {
+      color: #f9f9f9;
+      font-size: 0.8em;
+    }
+  }
+}
+
+ion-card {
+  width: 100%;
+  margin: 0 10px;
+}

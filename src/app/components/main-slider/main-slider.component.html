@@ -1,0 +1,27 @@
+<ion-slides pager="true" [options]="slideOpts" #slideWithNav>
+  <ion-slide
+    *ngFor="let item of data; let i = index"
+    (click)="openTournament()"
+  >
+    <div
+      class="imagediv"
+      [ngStyle]="{
+        'background-image':
+          'linear-gradient(0deg,rgba(88, 87, 88, 0.3),rgba(94, 93, 94, 0.3)),url(' +
+          item.image +
+          ')',
+        'background-repeat': 'no-repeat',
+        height: '40% 100px',
+        'background-size': 'cover'
+      }"
+    >
+      <div class="inner">
+        <ion-label>
+          <p class="category">{{ item.subtitle }}</p>
+          <h2 class="title">{{ item.title }}</h2>
+          <!-- <p class="date">{{ item.date }}</p> -->
+        </ion-label>
+      </div>
+    </div>
+  </ion-slide>
+</ion-slides>
