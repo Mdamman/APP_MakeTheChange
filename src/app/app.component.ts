@@ -18,23 +18,20 @@ import { first } from "rxjs/operators";
 })
 export class AppComponent {
   appPages = [
-    
-    {title: "Accueil",
-    url: "/app/user/profil",
-    ionicIcon: "home-outline",
-  },
+    { title: "Accueil", url: "/app/user/profil", ionicIcon: "home-outline" },
 
-    
     {
       title: "Tableau de bord",
       url: "/app/user/friends",
       customIcon: "./assets/custom-icons/side-menu/contact-card.svg",
     },
-    
-    {title: "Contreparties",
-    url: "/app/categories",
-    ionicIcon: "bag-handle-outline",},
-    
+
+    {
+      title: "Contreparties",
+      url: "/app/categories",
+      ionicIcon: "bag-handle-outline",
+    },
+
     {
       title: "Blog",
       url: "/posts",
@@ -50,11 +47,13 @@ export class AppComponent {
       url: "/firebase/auth/profile",
       ionicIcon: "person-outline",
     },
+
     {
       title: "Donations",
       url: "/donation-list",
       ionicIcon: "list-outline",
     },
+
     // {
     //   title: "Edit Profile",
     //   url: "/edit-profile",
@@ -92,6 +91,11 @@ export class AppComponent {
   textDir = "ltr";
   profile: any;
   currentUser: firebase.User;
+
+  //stats
+  totalAmount: number = 0;
+  totalContributors: number = 0;
+  projects: any[] = [];
   // Inject HistoryHelperService in the app.components.ts so its available app-wide
   constructor(
     public translate: TranslateService,
@@ -107,6 +111,7 @@ export class AppComponent {
       if (user) {
         this.currentUser = user;
         this.fetchProfile();
+        this.loadDonations();
       } else {
         this.currentUser = null;
       }
@@ -118,6 +123,24 @@ export class AppComponent {
       .getDocument("users", this.currentUser.uid)
       .pipe(first())
       .toPromise();
+  }
+
+  loadDonations() {
+    return this.firestore.getCollection("donations").subscribe((data: any) => {
+      this.totalAmount = 0;
+      this.totalContributors = 0;
+
+      data
+        .filter((ele) => {
+          return ele.userId === this.currentUser.email;
+        })
+        .forEach((element) => {
+          this.totalAmount += element.amount;
+          // this.totalContributors += 1;
+          if (!this.projects.includes(element.projectId))
+            this.projects.push(element.projectId);
+        });
+    });
   }
 
   async initializeApp() {

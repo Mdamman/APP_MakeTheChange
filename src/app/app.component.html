@@ -14,25 +14,32 @@
                   [src]="
                     profile?.avatar
                       ? profile?.avatar
-                      : 'https://makethechange.be/wp-content/uploads/2021/10/BEEoDIVERSITY-logo-terre.png'
+                      : './assets/sample-images/avatar.png'
                   "
                 ></app-image-shell>
               </app-aspect-ratio>
             </ion-col>
             <ion-col class="user-info-wrapper" size="8">
-              <h3 class="user-name">
+              <h2 class="user-name" style="font-size: 1em">
                 {{ profile?.firstName }} {{ profile?.lastName }}
-              </h3>
-              <h5 class="user-handle">{{ currentUser?.email }}</h5>
+
+                <ion-icon
+                  [routerLink]="['firebase/auth/profile']"
+                  name="create-outline"
+                ></ion-icon>
+              </h2>
+              <h5 class="user-handle" style="font-size: 0.9em">
+                {{ currentUser?.email }}
+              </h5>
             </ion-col>
           </ion-row>
           <ion-row class="user-stats-wrapper user-details-wrapper">
             <ion-col>
-              <span class="user-stat-value">2</span>
+              <span class="user-stat-value">{{ projects?.length }}</span>
               <span class="user-stat-name">Contributions</span>
             </ion-col>
             <ion-col>
-              <span class="user-stat-value">8</span>
+              <span class="user-stat-value">{{ totalAmount }}</span>
               <span class="user-stat-name">Impacts positifs</span>
             </ion-col>
           </ion-row>
@@ -40,9 +47,9 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-list-header>
+          <!-- <ion-list-header>
             <ion-label>Menu</ion-label>
-          </ion-list-header>
+          </ion-list-header> -->
           <ion-menu-toggle
             autoHide="false"
             *ngFor="let p of appPages; let i = index"
@@ -65,3 +72,4 @@
     <ion-router-outlet id="menu-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
+

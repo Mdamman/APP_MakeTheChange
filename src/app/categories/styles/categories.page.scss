@@ -6,9 +6,6 @@
   --page-margin: var(--app-narrow-margin);
 
   --page-categories-gutter: calc(var(--page-margin) / 4);
-
-  --page-category-background: var(--ion-color-medium);
-  --page-category-background-rgb: var(--ion-color-medium-rgb);
 }
 
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
@@ -45,27 +42,73 @@
   }
 
   .travel-category {
-    --page-category-background: #00AFFF;
-    --page-category-background-rgb: 0,175,255;
+    --page-category-background: #00afff;
+    --page-category-background-rgb: 0, 175, 255;
   }
 
   .fashion-category {
     --page-category-background: #cb328f;
-    --page-category-background-rgb: 203,50,143;
+    --page-category-background-rgb: 203, 50, 143;
   }
 
   .food-category {
     --page-category-background: #ebbb00;
-    --page-category-background-rgb: 235,187,0;
+    --page-category-background-rgb: 235, 187, 0;
   }
 
   .deals-category {
     --page-category-background: #70df70;
-    --page-category-background-rgb: 112,223,112;
+    --page-category-background-rgb: 112, 223, 112;
   }
 
   .real-estate-category {
     --page-category-background: #d9453a;
-    --page-category-background-rgb: 217,69,58;
+    --page-category-background-rgb: 217, 69, 58;
   }
+}
+
+ion-list {
+  background: transparent;
+  ion-list-header {
+    color: var(--ion-color-primary);
+    ion-label {
+      margin-top: 6px;
+    }
+  }
+  margin-bottom: 100px;
+}
+
+.points {
+  background: #f9f9f9;
+  margin: 12px 16px;
+  border-radius: 16px;
+  padding: 12px;
+  p {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 12px;
+    background: var(--ion-color-secondary);
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: var(--ion-color-dark) !important;
+  }
+}
+
+.partner {
+  border: 1px dotted gray;
+  // background: #fafafa;
+  margin: 12px 16px;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+ion-thumbnail {
+  border-radius: 8px;
+  overflow: hidden;
 }

@@ -113,14 +113,16 @@ const routes: Routes = [
       ),
   },
 
-  {path :'posts',
-   loadChildren: () => import ('./pages/posts/posts.module').then(m => m.PostsPageModule)
-
+  {
+    path: "posts",
+    loadChildren: () =>
+      import("./pages/posts/posts.module").then((m) => m.PostsPageModule),
   },
 
-  {path :'posts/:id',
-   loadChildren: () => import ('./pages/posts/posts.module').then(m => m.PostsPageModule)
-
+  {
+    path: "posts/:id",
+    loadChildren: () =>
+      import("./pages/post/post.module").then((m) => m.PostPageModule),
   },
   {
     path: "donate",

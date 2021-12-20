@@ -1,17 +1,18 @@
-import { IonicModule } from '@ionic/angular';
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { IonicModule } from "@ionic/angular";
+import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { ComponentsModule } from '../components/components.module';
+import { ComponentsModule } from "../components/components.module";
 
-import { CategoriesPage } from './categories.page';
+import { CategoriesPage } from "./categories.page";
+import { DonateService } from "../donate/donate.service";
 
 const categoriesRoutes: Routes = [
   {
-    path: '',
-    component: CategoriesPage
-  }
+    path: "",
+    component: CategoriesPage,
+  },
 ];
 
 @NgModule({
@@ -19,8 +20,9 @@ const categoriesRoutes: Routes = [
     IonicModule,
     CommonModule,
     RouterModule.forChild(categoriesRoutes),
-    ComponentsModule
+    ComponentsModule,
   ],
-  declarations: [ CategoriesPage ]
+  declarations: [CategoriesPage],
+  providers: [DonateService],
 })
 export class CategoriesPageModule {}
