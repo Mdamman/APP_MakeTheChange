@@ -2,7 +2,7 @@
 // Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
 :host {
   --page-margin: var(--app-broad-margin);
-  --page-background: var(--app-background-shade);
+  --page-background: "#fff";
 }
 
 ion-toolbar {
@@ -11,31 +11,6 @@ ion-toolbar {
 
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
 .signup-content {
-  --background: var(--page-background);
-  --padding-start: var(--page-margin);
-  --padding-end: var(--page-margin);
-  --padding-top: var(--page-margin);
-  --padding-bottom: var(--page-margin);
-
-  .auth-title {
-    color: var(--ion-color-dark);
-    font-weight: bold;
-    margin-top: calc(var(--page-margin) / 2);
-    margin-bottom: calc(var(--page-margin) * (3/2));
-    letter-spacing: 0.6px;
-  }
-
-
-  .inputs-list {
-    --ion-item-background: var(--page-background);
-
-    .input-item {
-      --padding-start: 0px;
-      --padding-end: 0px;
-      --inner-padding-end: 0px;
-    }
-  }
-
   .error-container {
     .error-message {
       margin: calc(var(--page-margin) / 2) 0px;
@@ -50,37 +25,81 @@ ion-toolbar {
     }
   }
 
-  .signup-btn {
-    margin: calc(var(--page-margin) / 2) 0px;
-  }
-
-  .other-auth-options-row {
-    justify-content: flex-end;
-    align-items: center;
-
-    .login-btn {
-      --color: var(--ion-color-secondary);
-      margin: 0px;
-
-      &:focus {
-        outline: none;
-      }
+  //SignUp form heading
+  .item-heading {
+    margin: 20px 0px;
+    //heading
+    h2 {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: var(--ion-color-dark);
     }
   }
 
-  .social-auth-options {
-    .options-divider {
-      color: var(--ion-color-medium);
-  		margin: var(--page-margin) 0px;
-  		text-align: center;
+  //social buttons
+  .item-social-buttons {
+    margin: 30px 0px;
+    ion-button {
+      height: 60px;
+      width: 60px;
+      --border-radius: 50%;
+    }
+  }
+
+  //SignUp form input
+  .item-input {
+    //input field
+    ion-input {
+      --background: #f9f9f9;
+      --color: var(--ion-color-dark);
+      border-radius: 4px;
+      // --padding: 16px;
+      // border-bottom: 3px solid;
+      // border-image-slice: 1;
+      // border-image-source: linear-gradient(
+      //   90deg,
+      //   var(--ion-color-light) 0%,
+      //   var(--ion-color-primary) 50%
+      // );
+    }
+    //label
+    p {
+      font-size: 0.8em;
+      margin: 3px 0px;
+      color: var(--ion-color-dark);
+    }
+  }
+
+  //SignUp button
+  .item-button {
+    p {
+      font-size: 0.7em;
+      margin: 3px 0px;
+      color: #fff;
+      span {
+        font-weight: bold;
+      }
     }
 
-    .social-auth-btn {
-      margin: 0px;
-
-      &:not(:first-child) {
-        margin-top: var(--page-margin);
-      }
+    ion-button {
+      font-size: 1em;
+      text-transform: capitalize;
+      // --background: linear-gradient(
+      //   90deg,
+      //   var(--ion-color-light) 0%,
+      //   var(--ion-color-primary) 50%
+      // );
+    }
+  }
+}
+.item-footer {
+  p {
+    // font-size: 0.8em;
+    margin: 16px 0px;
+    // color: #fff;
+    span {
+      font-weight: bold;
+      color: var(--ion-color-secondary);
     }
   }
 }

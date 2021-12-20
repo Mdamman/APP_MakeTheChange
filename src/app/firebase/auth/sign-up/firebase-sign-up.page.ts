@@ -1,18 +1,17 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { Location } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MenuController, LoadingController } from '@ionic/angular';
-import { PasswordValidator } from '../../../validators/password.validator';
-import { FirebaseAuthService } from '../firebase-auth.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, NgZone } from "@angular/core";
+import { Validators, FormGroup, FormControl } from "@angular/forms";
+import { Location } from "@angular/common";
+import { Router, ActivatedRoute } from "@angular/router";
+import { MenuController, LoadingController } from "@ionic/angular";
+import { PasswordValidator } from "../../../validators/password.validator";
+import { FirebaseAuthService } from "../firebase-auth.service";
+import { Subscription } from "rxjs";
+import { DonateService } from "../../../donate/donate.service";
 
 @Component({
-  selector: 'app-firebase-sign-up',
-  templateUrl: './firebase-sign-up.page.html',
-  styleUrls: [
-    './styles/firebase-sign-up.page.scss'
-  ]
+  selector: "app-firebase-sign-up",
+  templateUrl: "./firebase-sign-up.page.html",
+  styleUrls: ["./styles/firebase-sign-up.page.scss"],
 })
 export class FirebaseSignUpPage implements OnInit {
   signupForm: FormGroup;
@@ -22,20 +21,22 @@ export class FirebaseSignUpPage implements OnInit {
   authRedirectResult: Subscription;
 
   validation_messages = {
-    'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Enter a valid email.' }
+    nickname: [{ type: "required", message: "Pseudo is required." }],
+    email: [
+      { type: "required", message: "Email is required." },
+      { type: "pattern", message: "Enter a valid email." },
     ],
-    'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 6 characters long.' }
+    password: [
+      { type: "required", message: "Password is required." },
+      {
+        type: "minlength",
+        message: "Password must be at least 6 characters long.",
+      },
     ],
-    'confirm_password': [
-      { type: 'required', message: 'Confirm password is required' }
+    confirm_password: [
+      { type: "required", message: "Confirm password is required" },
     ],
-    'matching_passwords': [
-      { type: 'areNotEqual', message: 'Password mismatch' }
-    ]
+    matching_passwords: [{ type: "areNotEqual", message: "Password mismatch" }],
   };
 
   constructor(
@@ -45,40 +46,49 @@ export class FirebaseSignUpPage implements OnInit {
     public authService: FirebaseAuthService,
     private ngZone: NgZone,
     public loadingController: LoadingController,
-    public location: Location
+    public location: Location,
+    private firestore: DonateService
   ) {
-    this.matching_passwords_group = new FormGroup({
-      'password': new FormControl('', Validators.compose([
-        Validators.minLength(6),
-        Validators.required
-      ])),
-      'confirm_password': new FormControl('', Validators.required)
-    }, (formGroup: FormGroup) => {
-      return PasswordValidator.areNotEqual(formGroup);
-    });
+    this.matching_passwords_group = new FormGroup(
+      {
+        password: new FormControl(
+          "",
+          Validators.compose([Validators.minLength(6), Validators.required])
+        ),
+        confirm_password: new FormControl("", Validators.required),
+      },
+      (formGroup: FormGroup) => {
+        return PasswordValidator.areNotEqual(formGroup);
+      }
+    );
 
     this.signupForm = new FormGroup({
-      'email': new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      'matching_passwords': this.matching_passwords_group
+      nickname: new FormControl("", Validators.compose([Validators.required])),
+      email: new FormControl(
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"),
+        ])
+      ),
+      matching_passwords: this.matching_passwords_group,
     });
 
     // Get firebase authentication redirect result invoken when using signInWithRedirect()
     // signInWithRedirect() is only used when client is in web but not desktop
-    this.authRedirectResult = this.authService.getRedirectResult()
-    .subscribe(result => {
-      if (result.error) {
-        this.manageAuthWithProvidersErrors(result.error);
-      } else {
-        this.redirectLoggedUserToProfilePage();
-      }
-    });
+    this.authRedirectResult = this.authService
+      .getRedirectResult()
+      .subscribe((result) => {
+        if (result.error) {
+          this.manageAuthWithProvidersErrors(result.error);
+        } else {
+          this.redirectLoggedUserToProfilePage();
+        }
+      });
 
     // Check if url contains our custom 'auth-redirect' param, then show a loader while we receive the getRedirectResult notification
-    this.route.queryParams.subscribe(params => {
-      const authProvider = params['auth-redirect'];
+    this.route.queryParams.subscribe((params) => {
+      const authProvider = params["auth-redirect"];
       if (authProvider) {
         this.presentLoading(authProvider);
       }
@@ -100,7 +110,7 @@ export class FirebaseSignUpPage implements OnInit {
       // Get previous URL from our custom History Helper
       // If there's no previous page, then redirect to profile
       // const previousUrl = this.historyHelper.previousUrl || 'firebase/auth/profile';
-      const previousUrl = 'firebase/auth/profile';
+      const previousUrl = "firebase/auth/profile";
 
       // No need to store in the navigation history the sign-in page with redirect params (it's justa a mandatory mid-step)
       // Navigate to profile and replace current url with profile
@@ -109,10 +119,13 @@ export class FirebaseSignUpPage implements OnInit {
   }
 
   async presentLoading(authProvider?: string) {
-    const authProviderCapitalized = authProvider[0].toUpperCase() + authProvider.slice(1);
+    const authProviderCapitalized =
+      authProvider[0].toUpperCase() + authProvider.slice(1);
     this.redirectLoader = await this.loadingController.create({
-      message: authProvider ? 'Signing up with ' + authProviderCapitalized : 'Signin up ...',
-      duration: 4000
+      message: authProvider
+        ? "Signing up with " + authProviderCapitalized
+        : "Signin up ...",
+      duration: 4000,
     });
     await this.redirectLoader.present();
   }
@@ -132,83 +145,113 @@ export class FirebaseSignUpPage implements OnInit {
   prepareForAuthWithProvidersRedirection(authProvider: string) {
     this.presentLoading(authProvider);
 
-    this.location.go(this.location.path(), 'auth-redirect=' + authProvider, this.location.getState());
+    this.location.go(
+      this.location.path(),
+      "auth-redirect=" + authProvider,
+      this.location.getState()
+    );
   }
 
   manageAuthWithProvidersErrors(errorMessage: string) {
     this.submitError = errorMessage;
     // remove auth-redirect param from url
-    this.location.replaceState(this.router.url.split('?')[0], '');
+    this.location.replaceState(this.router.url.split("?")[0], "");
     this.dismissLoading();
+  }
+
+  saveProfile(user, nickname) {
+    //this.firestore.setDocument();
+
+    if (!nickname) return;
+
+    let userProfileObject = {
+      nickname: nickname,
+    };
+
+    return this.firestore.setDocument("users", user.uid, userProfileObject);
   }
 
   signUpWithEmail(): void {
     this.resetSubmitError();
     const values = this.signupForm.value;
-    this.authService.signUpWithEmail(values.email, values.matching_passwords.password)
-      .then(user => {
+    this.authService
+      .signUpWithEmail(values.email, values.matching_passwords.password)
+      .then((user) => {
         // navigate to user profile
+
+        console.log(user.user.uid);
+
+        this.saveProfile(user.user, values.nickname);
+
         this.redirectLoggedUserToProfilePage();
       })
-      .catch(error => {
+      .catch((error) => {
         this.submitError = error.message;
       });
   }
 
   doFacebookSignup(): void {
     this.resetSubmitError();
-    this.prepareForAuthWithProvidersRedirection('facebook');
+    this.prepareForAuthWithProvidersRedirection("facebook");
 
-    this.authService.signInWithFacebook()
-    .subscribe((result) => {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      // const token = result.credential.accessToken;
-      this.redirectLoggedUserToProfilePage();
-    }, (error) => {
-      this.manageAuthWithProvidersErrors(error.message);
-    });
+    this.authService.signInWithFacebook().subscribe(
+      (result) => {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        // const token = result.credential.accessToken;
+        this.redirectLoggedUserToProfilePage();
+      },
+      (error) => {
+        this.manageAuthWithProvidersErrors(error.message);
+      }
+    );
   }
 
   doGoogleSignup(): void {
     this.resetSubmitError();
-    this.prepareForAuthWithProvidersRedirection('google');
+    this.prepareForAuthWithProvidersRedirection("google");
 
-    this.authService.signInWithGoogle()
-    .subscribe((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // var token = result.credential.accessToken;
-      this.redirectLoggedUserToProfilePage();
-    }, (error) => {
+    this.authService.signInWithGoogle().subscribe(
+      (result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // var token = result.credential.accessToken;
+        this.redirectLoggedUserToProfilePage();
+      },
+      (error) => {
         console.log(error);
-      this.manageAuthWithProvidersErrors(error.message);
-    });
+        this.manageAuthWithProvidersErrors(error.message);
+      }
+    );
   }
 
   doTwitterSignup(): void {
     this.resetSubmitError();
-    this.prepareForAuthWithProvidersRedirection('twitter');
+    this.prepareForAuthWithProvidersRedirection("twitter");
 
-    this.authService.signInWithTwitter()
-    .subscribe((result) => {
-      // This gives you a Twitter Access Token. You can use it to access the Twitter API.
-      // var token = result.credential.accessToken;
-      this.redirectLoggedUserToProfilePage();
-    }, (error) => {
-      console.log(error);
-      this.manageAuthWithProvidersErrors(error.message);
-    });
+    this.authService.signInWithTwitter().subscribe(
+      (result) => {
+        // This gives you a Twitter Access Token. You can use it to access the Twitter API.
+        // var token = result.credential.accessToken;
+        this.redirectLoggedUserToProfilePage();
+      },
+      (error) => {
+        console.log(error);
+        this.manageAuthWithProvidersErrors(error.message);
+      }
+    );
   }
 
   doAppleSignup(): void {
     this.resetSubmitError();
-    this.prepareForAuthWithProvidersRedirection('apple');
+    this.prepareForAuthWithProvidersRedirection("apple");
 
-    this.authService.signInWithApple()
-    .subscribe((result) => {
-      this.redirectLoggedUserToProfilePage();
-    }, (error) => {
-      console.log(error);
-      this.manageAuthWithProvidersErrors(error.message);
-    });
+    this.authService.signInWithApple().subscribe(
+      (result) => {
+        this.redirectLoggedUserToProfilePage();
+      },
+      (error) => {
+        console.log(error);
+        this.manageAuthWithProvidersErrors(error.message);
+      }
+    );
   }
 }
