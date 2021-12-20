@@ -46,6 +46,12 @@ export class UserFriendsPage implements OnInit {
   suggested: any[];
   donated: any[];
 
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400,
+    pager: true,
+  };
+
   // @HostBinding("class.is-shell") get isShell() {
   //   return this.data && this.data.isShell ? true : false;
   // }
@@ -129,83 +135,4 @@ export class UserFriendsPage implements OnInit {
       }
     });
   }
-
-  // loadProjects() {
-  //   this.projects = [
-  //     {
-  //       id: "project001",
-  //       title: "Ecole communale de Plancenoit",
-  //       subtitle: "Une ruche scolaire",
-  //       imageUrl:
-  //         "https://makethechange.be/wp-content/uploads/2021/10/unnamed-2.png",
-  //       description: `Immergée au centre de l'école, la ruche ...`,
-  //       biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
-  //       surpopullation des abeilles. Respect du cycle de l'abeille et
-  //       minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
-  //       modèle plus proche de la nature et respectueux de l'abeille.`,
-  //       environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
-  //       des déchets de la ruche et ceux-ci sont utilisés directement dans la
-  //       fabrication des produits.`,
-  //       socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
-  //       La ruche possède une vitre pour observer la colonie sans déranger la
-  //       ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
-  //       totalContributors: 0,
-  //       totalAmount: 0,
-  //       userAmount: 0,
-  //     },
-  //     {
-  //       id: "project002",
-  //       title: "Prison de Nivelles",
-  //       subtitle: "Une ruche humaine",
-  //       imageUrl:
-  //         "https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg",
-  //       description: `Immergée au centre de la prison, la ruche ...`,
-  //       biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
-  //       surpopullation des abeilles. Respect du cycle de l'abeille et
-  //       minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
-  //       modèle plus proche de la nature et respectueux de l'abeille.`,
-  //       environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
-  //       des déchets de la ruche et ceux-ci sont utilisés directement dans la
-  //       fabrication des produits.`,
-  //       socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
-  //       La ruche possède une vitre pour observer la colonie sans déranger la
-  //       ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
-  //       totalContributors: 0,
-  //       totalAmount: 0,
-  //       userAmount: 0,
-  //     },
-  //   ];
-  // }
-
-  // segmentChanged(ev): void {
-  //   this.segmentValue = ev.detail.value;
-
-  //   // Check if there's any filter and apply it
-  //   this.searchList();
-  // }
-
-  // searchList(): void {
-  //   const query =
-  //     this.searchQuery && this.searchQuery !== null ? this.searchQuery : "";
-
-  //   if (this.segmentValue === "friends") {
-  //     this.friendsList = this.filterList(this.data.friends, query);
-  //   } else if (this.segmentValue === "followers") {
-  //     this.followersList = this.filterList(this.data.followers, query);
-  //   } else if (this.segmentValue === "following") {
-  //     this.followingList = this.filterList(this.data.following, query);
-  //   }
-  // }
-
-  // filterList(list, query): Array<any> {
-  //   return list.filter((item) =>
-  //     item.name.toLowerCase().includes(query.toLowerCase())
-  //   );
-  // }
-
-  // NOTE: Ionic only calls ngOnDestroy if the page was popped (ex: when navigating back)
-  // Since ngOnDestroy might not fire when you navigate from the current page, use ionViewWillLeave to cleanup Subscriptions
-  // ionViewWillLeave(): void {
-  //   this.subscriptions.unsubscribe();
-  // }
 }

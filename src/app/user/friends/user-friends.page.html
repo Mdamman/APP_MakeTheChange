@@ -23,118 +23,203 @@
     "
   />
 
-  <div style="text-align: center; margin-right: 30px; margin-left: 30px">
-    <h1 style="color: #000000">Votre Contribution</h1>
-  </div>
+  <ion-list>
+    <ion-list-header mode="ios">
+      <ion-label> Votre Contribution </ion-label>
+    </ion-list-header>
 
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col> <ion-button>Profil</ion-button> </ion-col>
-      <ion-col> <ion-button>Carte</ion-button> </ion-col>
-    </ion-row>
-  </ion-grid> -->
-  <ion-card class="ion-padding">
-    <ion-row class="ion-text-center">
-      <ion-col>
-        <ion-label>
-          <p>Points</p>
-          <h2>{{counter * 1}} <ion-icon src="./assets/custom-icons/food/points2.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Ruche</p>
-          <h2>{{counter * 0.07 | number : '1.2-2'}} % <ion-icon src="./assets/custom-icons/food/maison.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Abeilles</p>
-          <h2>{{counter * 44}} <ion-icon src="./assets/custom-icons/food/bee2.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-text-center">
-      <ion-col>
-        <ion-label>
-          <p>Cire</p>
-          <h2>{{counter * 1.5 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/cire.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Propolis</p>
-          <h2>{{counter * 0.06 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/propolis.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Miel</p>
-          <h2>{{counter * 2.24 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/miel.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+    <ion-card class="ion-padding" mode="ios">
+      <ion-row class="ion-text-start">
+        <ion-col>
+          <ion-label>
+            <p>Points</p>
+            <h2>
+              {{counter * 1}}
+              <ion-icon
+                src="./assets/custom-icons/food/points2.svg"
+                style="font-size: 16px"
+              ></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <p>Ruche</p>
+            <h2>
+              {{counter * 0.07 | number : '1.2-2'}} %
+              <ion-icon
+                src="./assets/custom-icons/food/maison.svg"
+                style="font-size: 16px"
+              ></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <p>Abeilles</p>
+            <h2>
+              {{counter * 44}}
+              <ion-icon
+                src="./assets/custom-icons/food/bee2.svg"
+                style="font-size: 16px"
+              ></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-start">
+        <ion-col>
+          <ion-label>
+            <p>Cire</p>
+            <h2>
+              {{counter * 1.5 | number : '1.2-2'}} g
+              <ion-icon
+                src="./assets/custom-icons/food/cire.svg"
+                style="font-size: 16px"
+              ></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <p>Propolis</p>
+            <h2>
+              {{counter * 0.06 | number : '1.2-2'}} g
+              <ion-icon
+                src="./assets/custom-icons/food/propolis.svg"
+                style="font-size: 16px"
+              ></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <p>Miel</p>
+            <h2>
+              {{counter * 2.24 | number : '1.2-2'}} g
+              <ion-icon
+                src="./assets/custom-icons/food/miel.svg"
+                style="font-size: 16px"
+              ></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-card>
 
-  <ion-card *ngFor="let project of donated">
-    <ion-card-header>
-      <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
-      <ion-card-title>{{project?.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-row class="ion-text-center">
-      <ion-col>
-        <ion-label>
-          <p>Points</p>
-          <h2>{{project?.userAmount * 1}} <ion-icon src="./assets/custom-icons/food/points2.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Ruche</p>
-          <h2>{{project?.userAmount * 0.07 | number : '1.2-2'}} %<ion-icon src="./assets/custom-icons/food/maison.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Abeilles</p>
-          <h2>{{project?.userAmount * 44}} <ion-icon src="./assets/custom-icons/food/bee2.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-text-center">
-      <ion-col>
-        <ion-label>
-          <p>Cire</p>
-          <h2>{{project?.userAmount * 1.5 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/cire.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Propolis</p>
-          <h2>{{project?.userAmount * 0.06 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/propolis.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label>
-          <p>Miel</p>
-          <h2>{{project?.userAmount * 2.21 | number : '1.2-2'}} g <ion-icon src="./assets/custom-icons/food/miel.svg" style="font-size:16px"></ion-icon></h2>
-        </ion-label>
-      </ion-col>
-    </ion-row>
+    <ion-list-header *ngIf="donated?.length >0 " mode="ios">
+      <ion-label> Project wise donations</ion-label>
+    </ion-list-header>
+    <ion-slides pager="true" [options]="slideOpts" #slideWithNav>
+      <ion-slide *ngFor="let project of donated">
+        <ion-card style="width: 100%" mode="ios">
+          <ion-card-header>
+            <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
+            <ion-card-title>{{project?.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row class="ion-text-start">
+              <ion-col>
+                <ion-label>
+                  <p>Points</p>
+                  <h2>
+                    {{project?.userAmount * 1}}
+                    <ion-icon
+                      src="./assets/custom-icons/food/points2.svg"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                  </h2>
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <p>Ruche</p>
+                  <h2>
+                    {{project?.userAmount * 0.07 | number : '1.2-2'}} %<ion-icon
+                      src="./assets/custom-icons/food/maison.svg"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                  </h2>
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <p>Abeilles</p>
+                  <h2>
+                    {{project?.userAmount * 44}}
+                    <ion-icon
+                      src="./assets/custom-icons/food/bee2.svg"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                  </h2>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-text-start">
+              <ion-col>
+                <ion-label>
+                  <p>Cire</p>
+                  <h2>
+                    {{project?.userAmount * 1.5 | number : '1.2-2'}} g
+                    <ion-icon
+                      src="./assets/custom-icons/food/cire.svg"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                  </h2>
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <p>Propolis</p>
+                  <h2>
+                    {{project?.userAmount * 0.06 | number : '1.2-2'}} g
+                    <ion-icon
+                      src="./assets/custom-icons/food/propolis.svg"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                  </h2>
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  <p>Miel</p>
+                  <h2>
+                    {{project?.userAmount * 2.21 | number : '1.2-2'}} g
+                    <ion-icon
+                      src="./assets/custom-icons/food/miel.svg"
+                      style="font-size: 16px"
+                    ></ion-icon>
+                  </h2>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
 
-    
-  </ion-card>
+    <ion-list-header *ngIf="suggested?.length >0 " mode="ios">
+      <ion-label> Suggestions</ion-label>
+    </ion-list-header>
 
-  <h2 style="margin-left: 16px">Suggestions</h2>
+    <ion-slides pager="true">
+      <ion-slide *ngFor="let project of suggested">
+        <ion-card style="width: 100%" mode="ios">
+          <ion-card-header>
+            <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
+            <ion-card-title>{{project?.title}}</ion-card-title>
+          </ion-card-header>
 
-  <ion-card *ngFor="let project of suggested">
-    <ion-card-header>
-      <ion-card-subtitle>{{project?.subtitle}}</ion-card-subtitle>
-      <ion-card-title>{{project?.title}}</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content> {{project?.description}} </ion-card-content>
-    <ion-button>Achetez-en !</ion-button>
-  </ion-card>
+          <ion-card-content> {{project?.description}} </ion-card-content>
+          <ion-button
+            expand="block"
+            class="ion-margin-horizontal ion-margin-bottom"
+            >Achetez-en !</ion-button
+          >
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </ion-list>
 </ion-content>
+
 
