@@ -35,6 +35,8 @@ export class UserProfilePage implements OnInit {
 
   projects: any[];
 
+  data: any[];
+
   //stats
   totalAmount: number;
   totalContributors: number;
@@ -63,12 +65,16 @@ export class UserProfilePage implements OnInit {
     });
   }
 
-  loadDonations() {
-    this.totalAmount = 0;
-    this.totalContributors = 0;
+  loadSlideData() {
+    return this.firestore.getCollection("slides").subscribe((slides) => {
+      this.data = slides;
+    });
+  }
 
+  loadDonations() {
     return this.firestore.getCollection("donations").subscribe((data: any) => {
-      console.log(data);
+      this.totalAmount = 0;
+      this.totalContributors = 0;
 
       data.forEach((element) => {
         this.totalAmount += element.amount;
@@ -76,55 +82,6 @@ export class UserProfilePage implements OnInit {
       });
     });
   }
-
-  // loadProjects() {
-  //   this.projects = [
-  //     {
-  //       id: "project001",
-  //       title: "Ecole communale de Plancenoit",
-  //       subtitle: "Une ruche scolaire",
-  //       imageUrl:
-  //         "https://makethechange.be/wp-content/uploads/2021/10/unnamed-2.png",
-  //       description: `Immergée au centre de l'école, la ruche ...`,
-  //       biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
-  //       surpopullation des abeilles. Respect du cycle de l'abeille et
-  //       minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
-  //       modèle plus proche de la nature et respectueux de l'abeille.`,
-  //       environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
-  //       des déchets de la ruche et ceux-ci sont utilisés directement dans la
-  //       fabrication des produits.`,
-  //       socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
-  //       La ruche possède une vitre pour observer la colonie sans déranger la
-  //       ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
-  //       totalContributors: 0,
-  //       totalAmount: 0,
-  //     },
-  //     {
-  //       id: "project002",
-  //       title: "Prison de Nivelles",
-  //       subtitle: "Une ruche humaine",
-  //       imageUrl:
-  //         "https://makethechange.be/wp-content/uploads/2021/10/prison-nivelles.jpg",
-  //       description: `Immergée au centre de la prison, la ruche ...`,
-  //       biodiversityImpact: `        Le lieu d'implémentation de la ruche est étudié pour éviter la
-  //       surpopullation des abeilles. Respect du cycle de l'abeille et
-  //       minimisation des intéractions avec celle-ci. La ruche Kenyanne adopte un
-  //       modèle plus proche de la nature et respectueux de l'abeille.`,
-  //       environmentalImpact: `        Le cycle des produits est entièrement local. La cire et la propolis sont
-  //       des déchets de la ruche et ceux-ci sont utilisés directement dans la
-  //       fabrication des produits.`,
-  //       socialEducationalImpact: `Les savons et autres produits sont emballés par la prison de Nivelles.
-  //       La ruche possède une vitre pour observer la colonie sans déranger la
-  //       ruche. 2 à 4 kg de miel par an sont offert par la ruche.`,
-  //       totalContributors: 0,
-  //       totalAmount: 0,
-  //     },
-  //   ];
-
-  //   // this.projects.forEach((item) =>
-  //   //   this.firestore.addDocument("projects", item)
-  //   // );
-  // }
 
   openProject(project: any) {
     let navigationExtras: NavigationExtras = {
@@ -137,6 +94,7 @@ export class UserProfilePage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadSlideData();
     this.loadProjects();
     this.loadDonations();
     this.subscriptions = this.route.data

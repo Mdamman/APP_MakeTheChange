@@ -10,10 +10,6 @@
   --page-actions-padding: 5px;
   --page-friends-gutter: calc(var(--page-margin) / 2);
   --page-pictures-gutter: calc(var(--page-margin) / 2);
-
- 
-  
-
 }
 
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
@@ -187,7 +183,7 @@
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       // .friend-item has 8px of side padding, we need an extra 4px at the beginning and end to fill the 12px side margin of the view
       flex: 0 0 calc(var(--page-margin) - var(--page-friends-gutter));
     }
@@ -195,9 +191,14 @@
     .friend-item {
       --col-item-width: 2;
       // SSR fix: Override ion-col styles
-      flex: 0 0 calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
-      width: calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
-      max-width: calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
+      flex: 0 0
+        calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
+      width: calc(
+        calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%
+      );
+      max-width: calc(
+        calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%
+      );
 
       padding: 0px var(--page-friends-gutter);
 
@@ -240,11 +241,17 @@
     .picture-item {
       --col-item-width: 2;
       // SSR fix: Override ion-col styles
-      flex: 0 0 calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
-      width: calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
-      max-width: calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
+      flex: 0 0
+        calc(calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%);
+      width: calc(
+        calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%
+      );
+      max-width: calc(
+        calc(var(--col-item-width) / var(--ion-grid-columns, 12)) * 100%
+      );
 
-      padding: 0px var(--page-pictures-gutter) calc(var(--page-pictures-gutter) * 2);
+      padding: 0px var(--page-pictures-gutter)
+        calc(var(--page-pictures-gutter) * 2);
     }
   }
 }
@@ -261,4 +268,60 @@
   .alert-message {
     display: none;
   }
+}
+
+ion-list {
+  background: transparent;
+  ion-list-header {
+    color: var(--ion-color-primary);
+    ion-label {
+      margin-top: 6px;
+    }
+  }
+  margin-bottom: 100px;
+}
+
+ion-slide {
+  margin-bottom: 20px;
+}
+
+:host ::ng-deep .swiper-pagination {
+  .swiper-pagination-bullet {
+    width: 16px;
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--ion-color-primary);
+  }
+}
+
+// ion-content {
+//   --background: #f9f9f9;
+// }
+
+.states {
+  margin: 16px;
+  ion-col {
+    background: #fff;
+    padding: 10px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.03);
+    h2 {
+      margin: 10px 0px;
+      font-size: 1.3em;
+    }
+    p {
+      font-size: 0.8em;
+    }
+  }
+  ion-col:nth-child(2) {
+    margin: 0px 16px;
+  }
+}
+
+ion-content {
+  --background: #f9f9f9;
 }
