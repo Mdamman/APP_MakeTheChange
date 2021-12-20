@@ -7,20 +7,20 @@
   --page-background: var(--app-background-shade);
 
   // Add custom colors to use with [color] property
-  @include ion-color('bright-blue') {
-    --ion-color-bright-blue: #001CFF;
-    --ion-color-bright-blue-rgb: 0,28,255;
+  @include ion-color("bright-blue") {
+    --ion-color-bright-blue: #001cff;
+    --ion-color-bright-blue-rgb: 0, 28, 255;
     --ion-color-bright-blue-contrast: #ffffff;
-    --ion-color-bright-blue-contrast-rgb: 255,255,255;
+    --ion-color-bright-blue-contrast-rgb: 255, 255, 255;
     --ion-color-bright-blue-shade: #0019e0;
     --ion-color-bright-blue-tint: #1a33ff;
   }
 
-  @include ion-color('bright-pink') {
-    --ion-color-bright-pink: #FF0DCB;
-    --ion-color-bright-pink-rgb: 255,13,203;
+  @include ion-color("bright-pink") {
+    --ion-color-bright-pink: #ff0dcb;
+    --ion-color-bright-pink-rgb: 255, 13, 203;
     --ion-color-bright-pink-contrast: #ffffff;
-    --ion-color-bright-pink-contrast-rgb: 255,255,255;
+    --ion-color-bright-pink-contrast-rgb: 255, 255, 255;
     --ion-color-bright-pink-shade: #e00bb3;
     --ion-color-bright-pink-tint: #ff25d0;
   }
@@ -55,16 +55,16 @@ ion-content {
     margin-top: calc(var(--page-margin) * -4);
     // z-3
     box-shadow: 0px 10px 20px rgba(var(--ion-color-dark-rgb), 0.15),
-                0px 3px 6px rgba(var(--ion-color-dark-rgb), 0.10);
+      0px 3px 6px rgba(var(--ion-color-dark-rgb), 0.1);
     // z-4
     // box-shadow: 0px 15px 25px rgba(var(--ion-color-dark-rgb), 0.15),
     //             0px 5px 10px rgba(var(--ion-color-dark-rgb), 0.05);
 
     .details-wrapper {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      // text-align: center;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
     }
 
     .user-name {
@@ -121,6 +121,6 @@ ion-content {
   .sign-out-btn {
     margin: 0px;
     margin-top: calc(var(--page-margin) * 4);
-    color: #001CFF;
+    color: #001cff;
   }
 }

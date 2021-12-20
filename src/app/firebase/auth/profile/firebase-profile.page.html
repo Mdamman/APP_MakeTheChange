@@ -1,7 +1,9 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="app/categories"></ion-back-button>
+      <ion-button [routerLink]="[ '/app/user/profil']">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="saveProfile()">Enregistrer</ion-button>
@@ -27,13 +29,25 @@
   <ion-row class="user-details">
     <ion-col class="ion-no-padding details-wrapper">
       <form [formGroup]="profileForm">
-        <ion-list class="profile-form ion-text-start" lines="none">
+        <ion-list class="profile-form ion-text-start">
           <ion-item>
-            <ion-input placeholder="Prénom" color="medium" formControlName="firstName" style="color:black;"></ion-input> <ion-icon name="create-outline"></ion-icon>
+            <ion-label>
+              Pseudo <ion-text color="danger"> *</ion-text>
+            </ion-label>
+            <ion-input
+              placeholder="Pseudo"
+              color="medium"
+              formControlName="nickname"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label> Prénom </ion-label>
+            <ion-input color="medium" formControlName="firstName"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-input placeholder="Nom" color="medium" formControlName="lastName" style="color:black;"></ion-input>
+            <ion-label> Nom </ion-label>
+            <ion-input color="medium" formControlName="lastName"></ion-input>
           </ion-item>
 
           <ion-list-header>
@@ -44,39 +58,39 @@
               rows="4"
               placeholder="Écrivez nous quelque chose à propos de vous..."
               formControlName="about"
-              syle="color:black;"
             ></ion-textarea>
           </ion-item>
-
         </ion-list>
       </form>
     </ion-col>
   </ion-row>
+  <!-- <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-subtitle>Suivez votre impact !</ion-card-subtitle>
+      <ion-card-title>Mes Projets</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      Découvrir vos projets et leurs impacts sur la biodiversité.
+    </ion-card-content>
+    <ion-button
+      style="color: white"
+      expand="block"
+      shape="round"
+      class="ion-margin"
+      [routerLink]="['/app/user/friends']"
+    >
+      Voir
+    </ion-button>
+  </ion-card> -->
   <ion-row class="user-preferences-wrapper">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>Suivez votre impact !</ion-card-subtitle>
-        <ion-card-title>Mes Projets</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Découvrir vos projets et leurs impacts sur la biodiversité.
-      </ion-card-content>
-      <ion-button
-        style="color: white"
-        expand="block"
-        [routerLink]="['/app/user/friends']"
-      >
-        Voir
-      </ion-button>
-    </ion-card>
     <ion-col size="12">
       <ion-button
         class="sign-out-btn"
         expand="block"
+        shape="round"
         fill="outline"
-        color="bright-blue"
+        color="danger"
         (click)="signOut()"
         >Se déconnecter</ion-button
       >

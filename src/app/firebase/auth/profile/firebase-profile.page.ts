@@ -34,16 +34,18 @@ export class FirebaseProfilePage implements OnInit {
     public authService: FirebaseAuthService
   ) {
     this.profileForm = this.formBuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
+      nickname: ["", Validators.required],
+      firstName: [""],
+      lastName: [""],
       about: [""],
-      
     });
   }
 
   ngOnInit() {
     this.angularFire.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user);
+
         this.currentUser = user;
         this.fetchProfile();
       } else {
@@ -58,15 +60,15 @@ export class FirebaseProfilePage implements OnInit {
       .pipe(first())
       .toPromise();
 
+    console.log(this.profile);
+
     if (this.profile) {
-      this.avatar =
-        this.profile.avatar ||
-        "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y";
+      this.avatar = this.profile.avatar || "";
       this.profileForm.patchValue({
+        nickname: this.profile.nickname || "",
         firstName: this.profile.firstName || "",
         lastName: this.profile.lastName || "",
         about: this.profile.about || "",
-       
       });
     }
   }
@@ -149,4 +151,3 @@ export class FirebaseProfilePage implements OnInit {
     );
   }
 }
-
