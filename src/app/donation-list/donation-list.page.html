@@ -13,20 +13,29 @@
     <ion-col>
       <!-- <h2 class="title">leaderboard</h2> -->
       <div class="second" *ngIf="donations[1]">
-        <img [src]="donations[1]?.photoUrl" alt="" />
+        <img
+          [src]="donations[1]?.photoUrl? donations[1]?.photoUrl: './assets/sample-images/avatar.png' "
+          alt=""
+        />
         <span class="rank">2</span>
         <h2>{{donations[1]?.userName}}</h2>
         <span class="points">{{donations[1]?.amount}}</span>
       </div>
 
       <div class="first" *ngIf="donations[0]">
-        <img [src]="donations[0]?.photoUrl" alt="" />
+        <img
+          [src]="donations[0]?.photoUrl? donations[0]?.photoUrl: './assets/sample-images/avatar.png'"
+          alt=""
+        />
         <span class="rank">1</span>
         <h2>{{donations[0]?.userName}}</h2>
         <span class="points">{{donations[0]?.amount}}</span>
       </div>
       <div class="third" *ngIf="donations[2]">
-        <img [src]="donations[2]?.photoUrl" alt="" />
+        <img
+          [src]="donations[2]?.photoUrl? donations[2]?.photoUrl: './assets/sample-images/avatar.png' "
+          alt=""
+        />
         <span class="rank">3</span>
         <h2>{{donations[2]?.userName}}</h2>
         <span class="points">{{donations[2]?.amount}}</span>
@@ -40,18 +49,14 @@
     <ion-item *ngFor="let donation of donations; let i =index">
       <div slot="start" class="avatar">
         <img
-          [src]="donation?.profile?.avatar ?donation?.profile?.avatar : donation?.photoUrl"
+          [src]="donation?.photoUrl ? donation?.photoUrl : './assets/sample-images/avatar.png'"
           alt=""
         />
         <span class="rank">{{i+1}}</span>
       </div>
 
       <ion-label>
-        <h2 *ngIf="!donation?.profile?.firstName">{{donation?.userName}}</h2>
-        <h2 *ngIf="donation?.profile?.firstName">
-          {{donation?.profile?.firstName}} {{donation?.profile?.lastName}}
-        </h2>
-        <!-- <p>{{donation?.userId}}</p> -->
+        <h2 *ngIf="donation?.userName">{{donation?.userName}}</h2>
       </ion-label>
 
       <span slot="end" class="points"
