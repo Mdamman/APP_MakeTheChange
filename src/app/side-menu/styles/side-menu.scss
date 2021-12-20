@@ -24,7 +24,7 @@
   .user-details-wrapper {
     --ion-grid-column-padding: 0px;
 
-    // background-color: rgba(var(--ion-color-light-rgb), 0.15);
+    background-color: var(--ion-color-secondary);
     color: var(--ion-color-lightest);
     padding: var(--page-margin);
     align-items: center;
@@ -39,10 +39,11 @@
 
     .user-name {
       margin: 0px 0px 5px;
+      color: var(--ion-color-dark);
     }
 
     .user-handle {
-      color: var(--ion-color-light-shade);
+      color: var(--ion-color-medium);
       margin: 0px;
       font-size: 14px;
       font-weight: 400;
@@ -55,10 +56,11 @@
     .user-stat-value {
       margin-right: 5px;
       font-weight: 500;
+      color: var(--ion-color-dark);
     }
 
     .user-stat-name {
-      color: var(--ion-color-light-shade);
+      color: var(--ion-color-medium);
       font-size: 14px;
     }
   }
