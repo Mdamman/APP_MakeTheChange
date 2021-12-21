@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title> Votre profil </ion-title>
+    <ion-title> Mon tableau de bord </ion-title>
     <ion-buttons slot="end">
       <ion-button> {{counter}} points</ion-button>
     </ion-buttons>
@@ -25,7 +25,7 @@
 
   <ion-list>
     <ion-list-header mode="ios">
-      <ion-label> Votre Contribution </ion-label>
+      <ion-label class="contribution"> Ma Contribution </ion-label>
     </ion-list-header>
 
     <ion-card class="ion-padding" mode="ios">
@@ -108,7 +108,7 @@
     </ion-card>
 
     <ion-list-header *ngIf="donated?.length >0 " mode="ios">
-      <ion-label> Project wise donations</ion-label>
+      <ion-label style="text-align:center;"> Ma contribution par projet</ion-label>
     </ion-list-header>
     <ion-slides pager="true" [options]="slideOpts" #slideWithNav>
       <ion-slide *ngFor="let project of donated">
@@ -199,7 +199,7 @@
     </ion-slides>
 
     <ion-list-header *ngIf="suggested?.length >0 " mode="ios">
-      <ion-label> Suggestions</ion-label>
+      <ion-label style="text-align:center;"> Suggestions</ion-label>
     </ion-list-header>
 
     <ion-slides pager="true">
