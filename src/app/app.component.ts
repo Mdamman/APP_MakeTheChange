@@ -18,6 +18,14 @@ import { first } from "rxjs/operators";
 })
 export class AppComponent {
   appPages = [
+    
+    {
+      title: "Profil",
+      url: "/firebase/auth/profile",
+      ionicIcon: "person-outline",
+    },
+    
+    
     { title: "Accueil", url: "/app/user/profil", ionicIcon: "home-outline" },
 
     {
@@ -42,16 +50,12 @@ export class AppComponent {
       url: "/app/notifications",
       ionicIcon: "notifications-outline",
     },
-    {
-      title: "Profil",
-      url: "/firebase/auth/profile",
-      ionicIcon: "person-outline",
-    },
+   
 
     {
-      title: "Donations",
+      title: "Dons",
       url: "/donation-list",
-      ionicIcon: "list-outline",
+      ionicIcon: "people-outline",
     },
 
     // {
