@@ -1,14 +1,32 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Notifications
-    </ion-title>
+    <ion-title> Notifications </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of donations">
+      <ion-avatar slot="start" *ngIf="item?.projectImage">
+        <img [src]="item?.projectImage" />
+      </ion-avatar>
+      <label>
+        <h4>{{item?.projectName}}</h4>
+        <p>
+          Vous avez reçu {{item?.amount}} points pour votre adoption d'abeilles.
+        </p>
+      </label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- 
+
+
+
 
 <ion-content class="notifications-content">
   <ng-container *ngIf="notifications">
@@ -57,6 +75,6 @@
       </ion-item>
     </ion-item-group>
   </ng-container>
-</ion-content>
+</ion-content> -->
 
 
