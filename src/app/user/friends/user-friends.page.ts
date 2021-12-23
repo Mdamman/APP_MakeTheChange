@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
 // import { Subscription } from "rxjs";
 
 // import {
@@ -59,7 +59,8 @@ export class UserFriendsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firestore: DonateService,
-    private angularFire: AngularFireAuth
+    private angularFire: AngularFireAuth,
+    private nav: Router
   ) {
     this.counter = 0;
     this.donations = [];
@@ -108,6 +109,16 @@ export class UserFriendsPage implements OnInit {
 
       this.loadDonations();
     });
+  }
+
+  openProject(project: any) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        project: project,
+      },
+    };
+
+    this.nav.navigate(["/contact-card"], navigationExtras);
   }
 
   loadDonations() {
