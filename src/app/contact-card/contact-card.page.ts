@@ -1,8 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, NavigationExtras, Router } from "@angular/router";
+import {
+  ActivatedRoute,
+  Navigation,
+  NavigationExtras,
+  Router,
+} from "@angular/router";
 import { DonateService } from "../donate/donate.service";
 import firebase from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { NavController } from "@ionic/angular";
 @Component({
   selector: "app-contact-card",
   templateUrl: "./contact-card.page.html",
@@ -23,7 +29,8 @@ export class ContactCardPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private firestore: DonateService,
-    private angularFire: AngularFireAuth
+    private angularFire: AngularFireAuth,
+    private nav: NavController
   ) {
     this.route.queryParams.subscribe((params) => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -44,6 +51,10 @@ export class ContactCardPage implements OnInit {
         this.currentUser = null;
       }
     });
+  }
+
+  goBack() {
+    this.nav.back();
   }
 
   loadDonations() {
@@ -68,4 +79,5 @@ export class ContactCardPage implements OnInit {
     this.router.navigate(["/donate"], navigationExtras);
   }
 }
+
 
