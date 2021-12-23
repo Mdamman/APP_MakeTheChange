@@ -7,6 +7,8 @@ import { DonateService } from "./donate/donate.service";
 import { AngularFireAuth } from "@angular/fire/auth";
 import firebase from "firebase/app";
 import { first } from "rxjs/operators";
+import { MenuController } from "@ionic/angular";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
@@ -106,7 +108,9 @@ export class AppComponent {
     public historyHelper: HistoryHelperService,
     private seoService: SeoService,
     private firestore: DonateService,
-    private angularFire: AngularFireAuth
+    private angularFire: AngularFireAuth,
+    private menu: MenuController,
+    private route: Router
   ) {
     this.initializeApp();
     this.setLanguage();
@@ -167,5 +171,10 @@ export class AppComponent {
     // this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
     //   this.textDir = (event.lang === 'ar' || event.lang === 'iw') ? 'rtl' : 'ltr';
     // });
+  }
+
+  openProfileEdit() {
+    this.route.navigate(["firebase/auth/profile"]);
+    this.menu.toggle();
   }
 }

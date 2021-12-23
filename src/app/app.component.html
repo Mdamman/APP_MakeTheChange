@@ -24,7 +24,7 @@
                 {{ profile?.firstName }} {{ profile?.lastName }}
 
                 <ion-icon
-                  [routerLink]="['firebase/auth/profile']"
+                (click)="openProfileEdit()"
                   name="create-outline"
                 ></ion-icon>
               </h2>
