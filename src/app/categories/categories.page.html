@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header mode="ios">
+    <ion-list-header mode="ios" class="heading-list-title">
       <ion-label style="text-align:center;"> Échangez vos points</ion-label>
     </ion-list-header>
 
@@ -38,31 +38,63 @@
       <ion-label> 5-10 points</ion-label>
     </ion-list-header>
 
-    <ion-item-sliding>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img
-            [src]="'https://makethechange.be/wp-content/uploads/2021/11/chariot.png'"
-          />
-        </ion-thumbnail>
-        <label>
-          <h4>10% de réduction sur le site web-shop.</h4>
-          <p>5 points.</p>
-        </label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option
-          color="tertiary"
-          onclick="window.open('http://makethechange.be',
-        '_blank', 'location=yes'); return false;"
-        >
-          Découvrir
-        </ion-item-option>
-      </ion-item-options>
-      
-    </ion-item-sliding>
+    <div [ngClass]="{disabled: counter < 5}">
+      <ion-item-sliding>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img
+              [src]="'https://makethechange.be/wp-content/uploads/2021/11/chariot.png'"
+            />
+          </ion-thumbnail>
+          <label>
+            <h4>10% de réduction sur le site web-shop.</h4>
+            <p>5points.</p>
+          </label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option
+            color="tertiary"
+            onclick="window.open('http://makethechange.be',
+            '_blank', 'location=yes'); return false;"
+          >
+            Découvrir
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item-options side="start">
+          <ion-item-option color="tertiary">Echanger</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
 
-    <ion-item-sliding>
+    <div [ngClass]="{disabled: counter<10}">
+      <ion-item-sliding>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img
+              [src]="'https://makethechange.be/wp-content/uploads/2021/11/mini-scaled.jpg'"
+            />
+          </ion-thumbnail>
+          <label>
+            <h4>Recevez un mini savon.</h4>
+            <p>10points.</p>
+          </label>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option
+            color="tertiary"
+            onclick="window.open('http://makethechange.be',
+          '_blank', 'location=yes'); return false;"
+            >Découvrir</ion-item-option
+          >
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+
+    <ion-list-header mode="ios">
+      <ion-label> 15-30 points</ion-label>
+    </ion-list-header>
+
+    <div [ngClass]="{disabled: counter<15}">
       <ion-item>
         <ion-thumbnail slot="start">
           <img
@@ -70,293 +102,156 @@
           />
         </ion-thumbnail>
         <label>
-          <h4>Recevez un mini savon.</h4>
-          <p>10 points.</p>
+          <h4>Recevez un savon de 100g.</h4>
+          <p>15points.</p>
         </label>
       </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option
-          color="tertiary"
-          onclick="window.open('https://makethechange.be/produit/savon-doux-habeebee/',
-        '_blank', 'location=yes'); return false;"
-          >Découvrir</ion-item-option
-        >
-      </ion-item-options>
-    </ion-item-sliding>
 
-    <ion-list-header mode="ios">
-      <ion-label> 15-30 points</ion-label>
-    </ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0068_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez une bougie Beldi.</h4>
+          <p>15points.</p>
+        </label>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0014_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez une baume P'tit Bezzou.</h4>
+          <p>15points.</p>
+        </label>
+      </ion-item>
+    </div>
 
-    <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/mini-scaled.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez un savon de 100g.</h4>
-        <p>15 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
+    <div [ngClass]="{disabled: counter<30}">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0004_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez un shampoing solide</h4>
+          <p>30points.</p>
+        </label>
+      </ion-item>
 
-    <ion-item-sliding>
-  <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0068_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez une bougie Beldi.</h4>
-        <p>15 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('https://makethechange.be/produit/bougie-beldi-habeebee/',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0028_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez une baume Bees & Love</h4>
+          <p>30points.</p>
+        </label>
+      </ion-item>
 
-  <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0014_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez une baume P'tit Bezzou.</h4>
-        <p>15 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-09-habeebee_baume-ete_1x1.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez une baume d'été</h4>
+          <p>30points.</p>
+        </label>
+      </ion-item>
+    </div>
 
-  <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0004_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez un shampoing solide</h4>
-        <p>30 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
-
-   <ion-item-sliding>
-  <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0028_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez une baume Bees & Love</h4>
-        <p>30 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
-
-  <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-09-habeebee_baume-ete_1x1.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez une baume d'été</h4>
-        <p>30 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
     <ion-list-header mode="ios">
       <ion-label> 40-60 points</ion-label>
     </ion-list-header>
-  
-<ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0025_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez une baume pied total</h4>
-        <p>40 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
 
-   <ion-item-sliding>
-  <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0008_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez une huile Visage Woauw</h4>
-        <p>50 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding> 
+    <div [ngClass]="{disabled: counter < 40}">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0025_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez une baume pied total</h4>
+          <p>40points.</p>
+        </label>
+      </ion-item>
+    </div>
+    <div [ngClass]="{disabled: counter < 50}">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0008_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez une huile Visage Woauw</h4>
+          <p>50points.</p>
+        </label>
+      </ion-item>
+    </div>
+    <div [ngClass]="{disabled: counter < 60}">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0078_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez un coffret Bee Suprised</h4>
+          <p>60points.</p>
+        </label>
+      </ion-item>
 
-  <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0078_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez un coffret Bee Suprised</h4>
-        <p>60 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0075_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez un coffret Savon du monde</h4>
+          <p>60points.</p>
+        </label>
+      </ion-item>
 
-    <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/2021-06-24-habeebee-0075_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez un coffret Savon du monde</h4>
-        <p>60 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
-
-  <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://makethechange.be/wp-content/uploads/2021/11/habebeeXmasDef_carre_1024x1024@2x.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Recevez un coffret Christmas</h4>
-        <p>60 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
-
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/11/habebeeXmasDef_carre_1024x1024@2x.jpg'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Recevez un coffret Christmas</h4>
+          <p>60points.</p>
+        </label>
+      </ion-item>
+    </div>
     <ion-list-header mode="ios">
       <ion-label> 100 points</ion-label>
     </ion-list-header>
-    
-    <ion-item-sliding>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img
-          [src]="'https://www.nmit.ac.nz/assets/Social-Media/Apiculture-Instagram-Hrz-1080x566px.jpg'"
-        />
-      </ion-thumbnail>
-      <label>
-        <h4>Bénéficiez d'une journée de formation d'apiculture</h4>
-        <p>100 points.</p>
-      </label>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option
-        color="tertiary"
-        onclick="window.open('http://makethechange.be',
-      '_blank', 'location=yes'); return false;"
-        >Découvrir</ion-item-option
-      >
-    </ion-item-options>
-  </ion-item-sliding>
+
+    <div [ngClass]="{disabled: counter < 100}">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img
+            [src]="'https://makethechange.be/wp-content/uploads/2021/10/Logo-Habeebee-1.png'"
+          />
+        </ion-thumbnail>
+        <label>
+          <h4>Bénéficiez d'une journée de formation d'apiculture</h4>
+          <p>100points.</p>
+        </label>
+      </ion-item>
+    </div>
   </ion-list>
 </ion-content>

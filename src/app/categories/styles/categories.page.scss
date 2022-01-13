@@ -69,13 +69,23 @@
 
 ion-list {
   background: transparent;
+
   ion-list-header {
+    background: var(--ion-color-secondary);
     color: var(--ion-color-primary);
     ion-label {
       margin-top: 6px;
     }
   }
+  .heading-list-title {
+    background: #fff;
+  }
   margin-bottom: 100px;
+
+  .disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
 }
 
 .points {
