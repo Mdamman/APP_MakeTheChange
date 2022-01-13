@@ -7,74 +7,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="notifications-content">
   <ion-list>
-    <ion-item *ngFor="let item of donations">
-      <ion-avatar slot="start" *ngIf="item?.projectImage">
-        <img [src]="item?.projectImage" />
-      </ion-avatar>
-      <label>
-        <h4>{{item?.projectName}}</h4>
-        <p>
-          Vous avez reçu {{item?.amount}} points pour votre adoption d'abeilles.
-        </p>
-      </label>
+    
+
+    <ion-item
+      class="notification-item"
+      lines="none"
+      *ngFor="let item of donations"
+    >
+      <ion-row class="notification-item-wrapper">
+        <ion-col size="2">
+          <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+            <app-image-shell
+              class="notification-image"
+              [src]="item?.projectImage"
+              [alt]="'user image'"
+            ></app-image-shell>
+          </app-aspect-ratio>
+        </ion-col>
+        <ion-col class="details-wrapper">
+          <h2 class="details-name">{{item?.projectName}}</h2>
+          <p class="details-description">
+            Vous avez reçu {{item?.amount}} points pour votre adoption
+            d'abeilles.
+          </p>
+        </ion-col>
+        <ion-col size="3" class="date-wrapper">
+          <h3 class="notification-date">{{ item.timestamp | date }}</h3>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>
-
-<!-- 
-
-
-
-
-<ion-content class="notifications-content">
-  <ng-container *ngIf="notifications">
-    <ion-item-group>
-      <ion-item-divider sticky>
-        <ion-label>Activité de votre ruche</ion-label>
-      </ion-item-divider>
-      <ion-item class="notification-item" lines="none" *ngFor="let notification of notifications.today">
-        <ion-row class="notification-item-wrapper">
-          <ion-col size="2">
-            <app-aspect-ratio [ratio]="{w: 1, h: 1}">
-              <app-image-shell class="notification-image" [src]="notification.image" [alt]="'user image'"></app-image-shell>
-            </app-aspect-ratio>
-          </ion-col>
-          <ion-col class="details-wrapper">
-            <h2 class="details-name">{{ notification.name }}</h2>
-            <p class="details-description">{{ notification.message }}</p>
-          </ion-col>
-          <ion-col size="2" class="date-wrapper">
-            <h3 class="notification-date">{{ notification.date }}</h3>
-          </ion-col>
-        </ion-row>
-      </ion-item>
-    </ion-item-group>
-    <ion-item-group>
-
-      
-      <ion-item-divider sticky>
-        <ion-label>Plus tôt dans le mois</ion-label>
-      </ion-item-divider>
-      <ion-item class="notification-item" lines="none" *ngFor="let notification of notifications.yesterday">
-        <ion-row class="notification-item-wrapper">
-          <ion-col size="2">
-            <app-aspect-ratio [ratio]="{w: 1, h: 1}">
-              <app-image-shell class="notification-image" [src]="notification.image" [alt]="'user image'"></app-image-shell>
-            </app-aspect-ratio>
-          </ion-col>
-          <ion-col class="details-wrapper">
-            <h2 class="details-name">{{ notification.name }}</h2>
-            <p class="details-description">{{ notification.message }}</p>
-          </ion-col>
-          <ion-col size="2" class="date-wrapper">
-            <h3 class="notification-date">{{ notification.date }}</h3>
-          </ion-col>
-        </ion-row>
-      </ion-item>
-    </ion-item-group>
-  </ng-container>
-</ion-content> -->
-
 
