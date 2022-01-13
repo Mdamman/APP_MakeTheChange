@@ -19,6 +19,8 @@ export class FirebaseSignUpPage implements OnInit {
   submitError: string;
   redirectLoader: HTMLIonLoadingElement;
   authRedirectResult: Subscription;
+  allNicknames = [];
+  isAvailable = true;
 
   validation_messages = {
     nickname: [{ type: "required", message: "Pseudo is required." }],
@@ -97,6 +99,20 @@ export class FirebaseSignUpPage implements OnInit {
 
   ngOnInit(): void {
     this.menu.enable(false);
+    this.loadNickNames();
+  }
+
+  loadNickNames() {
+    return this.firestore.getCollection("users").subscribe((data: any) => {
+      this.allNicknames = data.map((user) => user.nickname.toLowerCase());
+      this.signupForm.valueChanges.subscribe((data) => {
+        if (data?.nickname) {
+          if (this.allNicknames.includes(data?.nickname?.toLowerCase())) {
+            this.isAvailable = false;
+          } else this.isAvailable = true;
+        }
+      });
+    });
   }
 
   // Once the auth provider finished the authentication flow, and the auth redirect completes,
@@ -255,3 +271,4 @@ export class FirebaseSignUpPage implements OnInit {
     );
   }
 }
+
