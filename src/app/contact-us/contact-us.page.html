@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Formulaire de contact</ion-title>
+  </ion-toolbar>
+  <style>
+    :root {
+      --ion-safe-area-top: 20px;
+      --ion-safe-area-bottom: 22px;
+    }
+  </style>
+</ion-header>
+
+<ion-content class="signup-content">
+  <ion-row class="ion-justify-content-center item-heading">
+    <ion-col size="10">
+      <h2>Contactez-nous</h2>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]="signupForm" (ngSubmit)="submit()">
+    <!-- Input Item Start -->
+    <ion-row class="ion-justify-content-center item-input">
+      <ion-col size="10">
+        <p>Objet de votre message</p>
+        <ion-input
+          type="text"
+          formControlName="title"
+          clearInput
+          autocapitalize="off"
+          inputmode="text"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center item-input">
+      <ion-col size="10">
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validation_messages.title">
+            <div
+              class="error-message"
+              *ngIf="signupForm.get('title').hasError(validation.type) && (signupForm.get('title').dirty || signupForm.get('title').touched)"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+            <div *ngIf="!isAvailable" class="error-message">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>Choisissez un objet</span>
+            </div>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center item-input">
+      <ion-col size="10">
+        <p>Message</p>
+        <ion-textarea
+          rows="6"
+          type="text"
+          formControlName="message"
+          clearInput
+          autocapitalize="off"
+          inputmode="message"
+        ></ion-textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center item-input">
+      <ion-col size="10">
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validation_messages.message">
+            <div
+              class="error-message"
+              *ngIf="signupForm.get('message').hasError(validation.type) && (signupForm.get('message').dirty || signupForm.get('message').touched)"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center item-button">
+      <ion-col size="10" class="ion-align-self-center ion-text-end">
+        <ion-button
+          type="submit"
+          [disabled]="!signupForm.valid"
+          shape="round"
+          color="secondary"
+          expand="block"
+          >Envoyer</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+
