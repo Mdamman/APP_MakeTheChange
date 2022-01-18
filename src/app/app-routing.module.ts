@@ -144,8 +144,16 @@ const routes: Routes = [
       ),
   },
   {
-    path: "**",
-    redirectTo: "page-not-found",
+    path: "contact-us",
+    loadChildren: () =>
+      import("./contact-us/contact-us.module").then(
+        (m) => m.ContactUsPageModule
+      ),
+  },
+ 
+  {
+    path: 'contact-us',
+    loadChildren: () => import('./contact-us/contact-us.module').then( m => m.ContactUsPageModule)
   },
 ];
 @NgModule({
