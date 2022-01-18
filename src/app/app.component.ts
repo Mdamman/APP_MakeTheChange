@@ -21,12 +21,6 @@ import { Router } from "@angular/router";
 export class AppComponent {
   appPages = [
     
-    {
-      title: "Profil",
-      url: "/firebase/auth/profile",
-      ionicIcon: "person-outline",
-    },
-    
     
     { title: "Accueil", url: "/app/user/profil", ionicIcon: "home-outline" },
 
@@ -60,11 +54,11 @@ export class AppComponent {
       ionicIcon: "people-outline",
     },
 
-    // {
-    //   title: "Edit Profile",
-    //   url: "/edit-profile",
-    //   ionicIcon: "person-outline",
-    // },
+    {
+      title: "Contactez-nous",
+      url: "/contact-us",
+      ionicIcon: "mail-open-outline",
+    },
   ];
   accountPages = [
     {
