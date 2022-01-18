@@ -23,22 +23,22 @@ export class FirebaseSignUpPage implements OnInit {
   isAvailable = true;
 
   validation_messages = {
-    nickname: [{ type: "required", message: "Pseudo is required." }],
+    nickname: [{ type: "required", message: "Pseudo obligatoire" }],
     email: [
-      { type: "required", message: "Email is required." },
-      { type: "pattern", message: "Enter a valid email." },
+      { type: "required", message: "Email obligatoire" },
+      { type: "pattern", message: "Veuillez entrer une adresse email valide" },
     ],
     password: [
-      { type: "required", message: "Password is required." },
+      { type: "required", message: "Mot de passe obligatoire" },
       {
         type: "minlength",
-        message: "Password must be at least 6 characters long.",
+        message: "Le mot de passe doit contenir au moins 6 caractères",
       },
     ],
     confirm_password: [
-      { type: "required", message: "Confirm password is required" },
+      { type: "required", message: "Confirmez votre mot de passe" },
     ],
-    matching_passwords: [{ type: "areNotEqual", message: "Password mismatch" }],
+    matching_passwords: [{ type: "areNotEqual", message: "Mot de passe incorrect" }],
   };
 
   constructor(

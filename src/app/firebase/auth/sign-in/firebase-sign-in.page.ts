@@ -23,12 +23,12 @@ export class FirebaseSignInPage implements OnDestroy {
 
   validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Enter a valid email.' }
+      { type: 'required', message: 'Email obligatoire' },
+      { type: 'pattern', message: 'Veuillez entrer une adresse email valide' }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 6 characters long.' }
+      { type: 'required', message: 'Mot de passe obligatoire' },
+      { type: 'minlength', message: 'Le mot de passe doit contenir au moins 6 caractères' }
     ]
   };
 
